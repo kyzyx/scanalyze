@@ -173,6 +173,8 @@
 #  include "tkInt8.3.2.h"
 #elif TK_MAJOR_VERSION==8 && TK_MINOR_VERSION==3 && TK_RELEASE_SERIAL==3
 #  include "tkInt8.3.2.h"
+#elif TK_MAJOR_VERSION==8 && TK_MINOR_VERSION==5
+#  include "tkInt8.5.h"
 #else
 #error   Sorry, you will have to edit togl.c to include the right tkInt.h file
 #endif
