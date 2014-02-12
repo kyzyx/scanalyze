@@ -18,11 +18,10 @@ else
   OPTIMIZER = -g
 endif
 
-TARGET = -march=i686
 
 CC = gcc -w
-CXX = g++ -fno-for-scope -fpermissive -fwritable-strings -w
-LINK = $(CXX) $(TARGET)
+CXX = g++ -fno-for-scope -fpermissive -w -DPATH_MAX=256 -Dlinux
+LINK = $(CXX)
 
 
 #
@@ -35,7 +34,7 @@ INCLUDES += -I../.. \
 LIBPATHS = -L../../auxlibs/lib/Linux -L/usr/lib -L/usr/X11R6/lib
 
 # Update: 
-LIBS =  -ltk8.0 -ltcl8.0 -lGLU -lGL \
+LIBS =  -ltk8.5 -ltcl8.5 -lGLU -lGL \
 	-lX11 -lXext -lXmu -lz -lm
 AUXLIBS =
 
