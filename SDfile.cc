@@ -26,7 +26,6 @@ int gzread (FILE* file, void* buf, int size)
 #else
 #	include <zlib.h>
 #endif
-using std::__median;
 
 
 #if 1

@@ -24,6 +24,8 @@ using namespace std;
 
 #define SHOW(X) cout << #X " = " << X << endl
 
+#undef isfinite
+
 class Pnt3 {
 protected:
   float v[3];
