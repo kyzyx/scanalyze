@@ -1,0 +1,140 @@
+
+Scanalyze (version 1.0) README file
+-----------------------------------
+
+1.0 Compilation Instructions
+    1.1 Linux and IRIX
+    1.2 Windows
+2.0 Run Instructions
+    2.1 Linux and IRIX
+    2.2 Windows
+    2.3 Optional "QSlim" Mesh Decimation
+3.0 Windows Icon Instructions
+4.0 Distribution and Further Information
+
+
+1.0 Compilation Instructions
+----------------------------
+
+For all systems you will need to have OpenGL as well as GLU installed on 
+your computer.
+
+1.1 Linux and IRIX
+------------------
+In the scanalyze source code directory, run "make".  For Linux, you can 
+choose between the debug and optimized version.  Run "make opt" to compile 
+the optimized version, and "make debug" for the debug version.  The default 
+version is the debug version.  Similarly for IRIX, you can compile 32bit 
+and 64 bit debug and optimized versions.  Run "make opt32" or "make opt64 "
+for optimized versions, and "make debug32" or "make debug64" for debug 
+versions.
+
+When compiling for IRIX, you will need to modify the Makedefs.IRIX file to 
+include the correct path to your Tcl/Tk library files.  You may also need 
+to do this for Linux if your version of Tcl/Tk is not contained in the 
+include and library paths in the Makedefs.Linux file.
+
+On IRIX systems, you have the option of building scanalyze with
+fancy terminal support.  There is a line in the file Makedefs.IRIX
+which can be uncommented to enable this functionality, assuming
+that the necessary libraries are installed (tclrl, GNU ReadLine, termcap).
+
+1.2 Windows
+-----------
+To compile scanalyze you will need two more packages: SGI's IFL (image 
+format library) and Tcl/Tk version 8.0p2 (later versions are not 
+compatible yet). You also need Gnu Make; we use the version that comes 
+with Cygwin.  All three are available on the web page. 
+To build it you should: 
+
+-install Tck/Tk 
+-install IFL 
+-have installed MS VC++ 6.0 
+-install Cygwin 
+-unpack scanalyze 
+-(in the cygwin shell) cd to the scanalyze directory and type make.  Type 
+ make opt32 for the optimized version and make debug32 for the debug 
+ version.  The default version is the debug version.
+
+
+2.0 Run Instructions
+--------------------
+
+2.1 Linux and IRIX
+------------------
+-install Tcl/Tk 
+-set environment variable SCANALYZE_DIR to the directory where you  
+ unpacked scanalyze 
+-run scanalyze 
+-you may need to set the TCL_LIBRARY and TK_LIBRARY environment variables 
+ to the directory where init.tcl, etc... reside if Tcl/Tk is not able to 
+ find these files itself. 
+
+2.2 Windows
+-----------
+To run scanalyze you will need two more packages: SGI's IFL (image format 
+library) and Tcl/Tk version 8.0p2 (later versions are not compatible yet). 
+Both are available on the web page.
+
+-install Tck/Tk 
+-install IFL 
+-unpack scanalyze 
+-set environment variable SCANALYZE_DIR to the directory where you 
+ unpacked scanalyze 
+-run scanalyze 
+
+2.3 Optional "QSlim" Mesh Decimation
+------------------------------------
+Scanalyze features a couple of different types of mesh decimation.
+The "plycrunch" decimation algorithm is built into scanalyze, whereas
+the "qslim" decimation algorithm can be invoked as an external program.
+To support the qslim functionality, you'll need to have Michael
+Garland's "qslim" program installed on your system, and visible in
+your PATH when you run scanalyze.  Precompiled QSlim binaries for
+Windows, Linux, and IRIX are available for download at this URL:
+
+   http://graphics.cs.uiuc.edu/~garland/software/qslim.html
+
+3.0 Windows Icon Instructions
+-----------------------------
+
+To associate the scanalyze bunny icon with a ply file in Windows, perform 
+the following steps:
+
+- Right click on the ply file and then choose properties.  Next click on 
+on the "Change" button and select the scanalyze executable.  This will 
+cause scanalyze to load when a ply file is double clicked.
+
+- To associate the provided icon with scanalyze, click on Tools->Folder Options 
+in a Windows directory window.  Then click on File Types and find the PLY 
+file listing.  Click on the Advanced button, and then on the Change Icon 
+button to select which icon to use for scanalyze.
+
+
+4.0 Distribution and Further Information
+----------------------------------------
+
+Scanalyze was developed at the Stanford Computer Graphics Laboratory,
+and is copyrighted (2002) by the Board of Trustees of The Leland
+Stanford Junior University, all rights reserved.  The software is
+covered by the Stanford Computer Graphics Laboratory's General
+Software License.  Additional software licensing issues are
+addressed in the "LICENSE" file accompanying the scanalyze
+distribution.
+
+The Scanalyze WWW page is accessible at:
+
+   http://graphics.stanford.edu/software/scanalyze/
+
+Questions, bug reports, and suggestions regarding Scanalyze can be
+emailed to:
+
+   scanalyze@graphics.stanford.edu
+
+If you would like to receive announcements about future releases of
+this software, send email to:
+
+   majordomo@graphics.stanford.edu
+
+containing the text "subscribe scanalyze-announce" in the message body.
+

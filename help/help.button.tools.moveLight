@@ -1,0 +1,8 @@
+"Move the light mode."
+
+In this mode, you move the (directional) light source.  Click or drag
+the left mouse button around the screen.  When the mouse is in the center
+of the window, you get the default (straight-on) lighting.  When the mouse
+is near the top right, the light also appears to be coming from above and
+to the right.
+

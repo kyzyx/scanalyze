@@ -1,0 +1,91 @@
+#!/bin/csh -f
+
+if ($#argv == 0) then
+	echo ''
+	echo 'Usage: mesh.ply im.tsai [im2.tsai ...]'
+	echo ' Pastes im.rgb.. onto mesh.ply, using the transform in im.tsai'
+	echo ' A single .ply file results with all images on it'
+	echo ''
+	exit
+endif
+
+set MESH=$argv[1]
+shift
+
+# Start looping though image files
+set TMPFILE = /tmp/tsai2cply$$
+
+# pick the pastecolortempfile loc
+if ( -d "/tmp/openspace") then
+    set PASTECOLORTMP = /tmp/openspace
+else
+    set PASTECOLORTMP = /tmp
+endif
+
+# Set up the conf file for paste_color
+#cat /mich4/uvdavid/bin/pasteconf > $TMPFILE
+        cat > $TMPFILE << DONE
+plyunits = millimeters
+tempfile = "$PASTECOLORTMP/pastedavid_tmp_delete_nukit"
+
+neardist = 400
+fardist = 100000
+do_light_processing = yes
+light_pos = (0, 0, 0)
+depth_thresh = 0.9
+write_ply_normals = no
+write_ply_tstrips = no
+dynam_range_feather = 0
+// with cos.power 2, 70-degree cutoff is .117
+// with cos.power 1, 75-degree cutoff is .436
+//uncert_cosine_power = 2
+// min_confidence = 0.1
+min_confidence = 0.01
+// set unknown color to be green, for fun.
+unknown_color = (70, 18 , 18)
+DONE
+
+echo readply \"${MESH}\" 	>> $TMPFILE
+
+foreach file ($argv)
+	echo Processing $file ...
+
+	echo camera \"${file}\" >> $TMPFILE
+	echo processimage \"${file:r}.rgb\" >> $TMPFILE
+end
+
+set OUTFILEC = ${MESH:r}.c.ply
+set OUTFILECS = ${MESH:r}.cs.ply
+echo writeply \"${OUTFILEC}\" >> $TMPFILE
+
+	# Paste color
+	if ( -e "${OUTFILEC}" || -e "${OUTFILECS}" ) then
+		echo ${OUTFILEC} already exists.
+	else
+		pastecolor $TMPFILE
+	endif
+
+	# Fix up the ply file the results
+	if ( -e "${OUTFILECS}" ) then
+		echo ${OUTFILECS} already exists
+	else
+		echo "Cropping ${OUTFILEC}"
+		# Throw away all the points that didn't get colored
+		# plyconfcrop ${file:r}.c.ply >! ${file:r}.cs.ply
+		mv $OUTFILEC $OUTFILECS
+		# convert to multi-res set
+		echo "Crunching $OUTFILECS"
+		ply2crunchset $OUTFILECS
+		# plystrip everything for faster loading
+		echo "Stripping $OUTFILECS"
+		foreach i ($OUTFILECS:r.*.ply)
+			plystrip -s -q $i >! tmp.ply
+			/bin/mv tmp.ply $i
+		end
+		echo "Done with $OUTFILEC"
+	endif
+
+
+# Remove the TMPFILE
+rm $TMPFILE
+

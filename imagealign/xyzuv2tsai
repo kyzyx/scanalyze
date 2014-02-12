@@ -1,0 +1,37 @@
+#!/bin/csh -f
+
+# Set default values
+set CAMERA = 'DKCST5_2'
+set OVERWRITE = 0
+
+# Parse Args
+while ($#argv)
+	switch ($argv[1])
+		case '-h':
+			echo 'Usage: xyzuv2tsai [-o] [-c camera] file.xyzuv file.xyzuv ...'
+			echo "   -o  : overwrite existing .tsai files"
+			echo '   -c  : specify camera [ (defualt)DKCST5_2 | DKCST5_2V ] '
+			breaksw
+		case '-c':
+			set CAMERA = "$argv[2]"
+			shift
+			breaksw
+		case '-o':
+			set OVERWRITE = 1
+			breaksw
+		default:
+			break
+	endsw
+	shift
+end
+
+# Process files
+foreach file ($argv)
+	echo Processing ... $file
+	if ( -e "$file:r.tsai" && $OVERWRITE == 0) then
+		echo $file:r.tsai already exists
+	else
+		echo "path ('${SCANALYZE_DIR}/imagealign/matlab/heikkila',path); path ('${SCANALYZE_DIR}/imagealign/conf',path); path('${SCANALYZE_DIR}/imagealign/matlab',path); feval('find_extrinsics','$file:r','${CAMERA}');" | matlab | tail +11
+	endif
+end
+

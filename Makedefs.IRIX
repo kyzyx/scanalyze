@@ -1,0 +1,69 @@
+#
+# Versions
+#
+
+ALLVERSIONS = debug32 debug64 opt32 opt64
+DEFAULTVERSION = debug32
+
+
+#
+# Compiler choice, and target and optimization options
+#    Looks at BUILD (set by the top-level Makefile in recursive invocations of
+#    make) to determine the correct options to use
+#
+
+ifneq (,$(findstring opt,$(BUILD)))
+  OPTIMIZER = -O2 -OPT:Olimit=0
+else
+  OPTIMIZER = -g
+endif
+
+ifneq (,$(findstring 64,$(BUILD)))
+  TARGET = -64 -mips4
+else
+  TARGET = -n32 -mips3
+endif
+
+CC = cc
+CXX = CC
+LINK = $(CXX) $(TARGET) -J $(JOBS)
+
+
+#
+# Paths (include, library paths) and libraries
+#
+
+TCLROOT = /usr/common/tcl8.0
+
+INCLUDES += -I../.. \
+	    -I$(TCLROOT)/include \
+	    -I../../auxlibs/include/stl \
+	    -I../../auxlibs/include/tnt
+
+
+ifneq (,$(findstring 64,$(TARGET)))  # if n64 compilation
+	LIBPATHS = -L$(TCLROOT)/lib64
+else
+	LIBPATHS = -L$(TCLROOT)/lib32
+endif
+
+
+# If you want fancy terminal support (tclrl, GNU ReadLine), then
+# uncomment the line below, and verify that the libraries are linkable.
+#LIBS = -ltclrl8 -lreadline -ltermcap
+
+LIBS += -ltk8.0 -ltcl8.0 -lGLU -lGL \
+	-lX11 -lXext -lXmu -lz -lm -lifl
+AUXLIBS =
+
+
+
+#
+# Final compiler options
+#
+
+ALLFLAGS = $(OPTIMIZER) $(INCLUDES) $(TARGET) -MDupdate Makedepend
+CFLAGS = $(ALLFLAGS) -D_BOOL
+CXXFLAGS = -woff3262,1021,3303,3150 $(ALLFLAGS)
+
+

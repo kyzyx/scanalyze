@@ -1,0 +1,9 @@
+"Move the mesh mode."
+
+In this mode, your mouse actions in the main window will move the
+currently selected mesh.  Drag the left mouse button to rotate
+the mesh, middle mouse button to translate, and both together to
+move the mesh closer/farther from you.  Changes to the mesh
+position affect the mesh transform, which is saved if you write
+the .xf file when exiting.
+

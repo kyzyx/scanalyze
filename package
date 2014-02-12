@@ -1,0 +1,8 @@
+#! /bin/sh
+
+rm scanalyze.tar scanalyze.tar.gz
+tar cvf scanalyze.tar scanalyze.debug32 scanalyze.debug64
+tar uvf scanalyze.tar scanalyze.opt32 scanalyze.opt64
+tar uvf scanalyze.tar *.tcl *.xbm
+tar uvfF scanalyze.tar imagealign
+gzip scanalyze.tar

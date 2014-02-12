@@ -1,0 +1,23 @@
+"registration graph"
+
+This mode displays a graph containing symbolic handles for scans and pairings between scans. A dialog box provides controls over the information shown in the graph, as well as scan and link sets selection tools. 
+
+--------------------------------------------------------------------------------
+
+The mouse actions are modified when you are running over a symbol :
+* unique scan or link selection (left button) or 
+* multiple scan or link selection (right shift + left button) or
+* display of a contextual popup menu (right button)
+
+The (alt + right button) can be used for rectangle area selection
+
+Elsewhere the mouse behaviour is determined by the current chosen control mode (moveView, moveMesh, moveLight and so...).
+
+-------------------------------------------------------------------------------
+
+Refer to the help associated to the dialog box buttons for further information.
+
+
+
+
+

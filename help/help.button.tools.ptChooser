@@ -1,0 +1,6 @@
+XYZ Coordinate mode.  In this mode, when you click on the mesh, it will
+print the XYZ location (in world coordinates) of the point where you
+clicked.  This mode is also used for clicking the points for aligning
+images to the mesh using the "imagealign" tool.
+
+

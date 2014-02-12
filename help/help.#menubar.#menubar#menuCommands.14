@@ -1,0 +1,11 @@
+Align images to mesh, by clicking corresponding points.
+
+When the image alignment tool pops up, make sure you choose
+the appropriate camera type and desired zoom.  Then open the
+image.  Select points on the image by middle-clicking, and then
+hit space to confirm.  Then, in XYZ Coord mode in the scanalyze
+window, click on the corresponding point on the mesh.  You need
+at least 6 (?) points to have any hope of aligning the image
+to the mesh.
+
+

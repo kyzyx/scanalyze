@@ -1,0 +1,154 @@
+Scripting scanalyze
+magi@cs, last update 5/2/99
+
+
+Table of contents:
+0.  Prerequisites
+1.  Starting scanalyze
+2.  Configuration and defaults
+3.  Basic scripting
+3a. Loading scans
+3b. Listing scans
+3c. Saving scans
+
+
+0.  Prerequisites
+
+  This document assumes you already know Tcl scripting.
+
+  You'll do best if you already know how to use scanalyze (interactively)
+  to perform the task you want to script, because you'll have an idea of
+  the steps involved and if you want you can just go through the scanalyze
+  Tcl source (publicly visible in the scanalyze directory) to see what the 
+  UI does to accomplish the task.
+
+
+1.  Starting scanalyze
+
+  syntax: scanalyze [-noui] [somescript.tcl] [scanfile1] [scanfileN...]
+  All parameters are optional.
+
+  -noui, which allows you to run with no X display set, must be the first
+  argument on the command line.  Note that in -noui mode many commands
+  will be unavailable; this document mostly pertains to -noui mode, but
+  major differences will be explained below.
+
+  If you specify a script on the command line, scanalyze will execute it
+  as arbitrary Tcl script after startup, then exit, even if your script
+  does not end with the exit command.  There's no way that I know to have
+  scanalyze load, process a given script, and then stay loaded for
+  interactive use (although you could put such a script in your
+  ~/scanalyzerc file).
+
+  If you load scan files from the command line, these filenames must be
+  at the end of the command line.
+
+
+2.  Configuration and defaults
+
+  The latest public versions of scanalyze live in
+  /usr/graphics/project/scanner/scanalyze/[target type].
+
+  The version of scanalyze that will run if you execute 'scanalyze'
+  depends on the environment variable SCANALYZE_DIR, which you can set to
+  force a specific copy of scanalyze to be used (ie, if you are a
+  developer and build your own copy).  If this variable is not set,
+  scanalyze will look for the variable SCANALYZE_VERSION, which corresponds
+  to one of the target types in the above-named directory.  If this is not 
+  set, a default version will be chosen based on the machine you are running 
+  on.  In most cases you should not need either of these variables, and the
+  right thing will happen.
+
+  At startup, scanalyze reads configuration settings from
+  ~/scanalyzedefaults, which it maintains automatically with preferences
+  information.
+
+  Scanalyze also processes ~/scanalyzerc, if present, as arbitrary Tcl
+  script, for further customization options.
+
+
+3.  Basic scripting
+
+  This section lists how to load and save scan files, as well as find out
+  what's loaded in a way that you can refer back to it.
+
+  3a.  Loading files
+
+    Load files using the 'readfile' command.  readfile takes any number of 
+    arguments, which can contain the normal wildcards.  Note that [ and ] are
+    special to Tcl, so if you want to use a filespec such as [mf]*/*.sd, you
+    will have to escape the [ character, as in `readfile \[mf]*/*.sd`.
+
+    readfile will load all given files into scanalyze, and return a list
+    of scan identifiers naming all the scans it just loaded.
+
+    Scan identifiers are how scanalyze refers to scans internally, and
+    how you will name them in scripting commands.  They are the same names 
+    that you see in the Mesh Controls window if running with the UI.
+    Unlike filenames, they are guaranteed unique (if you load the same file
+    twice, it will have different scan identifiers each time.)
+
+  3b.  Listing loaded scans
+
+    You can obtain a list of the scan identifiers for all loaded scans
+    with the plv_listscans command (which takes no arguments).
+
+    If running with the UI, there are also a couple of additional
+    functions that return the same information: getMeshList will return the
+    list of all scan identifiers, and getVisibleMeshes will return only the
+    scan identifiers for visible meshes (visibility is a concept that is
+    largely meaningless in -noui mode).  Note that these commands will NOT
+    work on -noui mode.
+
+    You can also obtain the scan list sorted by various criteria with
+    plv_sort_scan_list (which needs arguments) or its easier wrapper
+    getSortedMeshList, which returns the scans sorted in the same order as
+    the MeshControls window.
+
+  3c.  Saving scans
+
+    There are various ways you can save a scan: in its native format, a
+    complete copy of all resolutions written as triangle meshes in .ply
+    format, a single mesh written in .ply format, or even a single
+    rendering in .rgb format.
+
+    For all these methods, you need at least two things: the scan
+    identifier for the scan you want to save, and an output filename.  If you
+    want to know the filename that the scan was loaded from, either to
+    overwrite it or as a base name for further munging, use the
+    plv_get_scan_filename command, which takes the scanid as its argument.
+
+    Writing a scan in its native format:
+    plv_write_scan scanid [outputname]
+    If outputname is omitted, the scan will attempt to overwrite the file
+    it was loaded from.  If the scan was not loaded from a file (ie, was
+    created by cliipping) this will fail.
+
+    Writing a scan as a multires .ply set:
+    saveScanAsPlySetToDir scanid dirname
+    A directory called dirname will be created, containing scanid.set and
+    one or more .ply files corresponding to the various resolutions of the
+    scan that you saved.
+
+    Writing a single resolution of a scan as a .ply file:
+    plv_write_resolutionmesh scanid resolution filename.ply
+    Resolution should be the number of polygons in the resolution you want 
+    to save, and can be obtained from the 'plv_getreslist scanid' command.
+
+    Writing an .rgb file of the current rendering:
+    (not applicable in -noui mode)
+    plv_writeiris renderwindow filename.rgb
+    Will save the contents of renderwindow to filename.rgb.  The name of
+    the main rendering window can be obtained with [globalset toglPane];
+    only a few other things (like line-depth analysis windows) will
+    require a different renderwindow.
+
+    Saving everything as multires .ply sets:
+    Finally, if you want to export the entire dataset loaded into
+    scanalyze as multires .ply sets with a minimum of effort, there's the
+    saveAllScansAsPlySets command, which executes saveScanAsPlySetToDir
+    automatically for each scan using scanid as the directory name.
+
+
+
+*** more to come. ***

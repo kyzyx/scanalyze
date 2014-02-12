@@ -1,0 +1,4 @@
+"Arbitrary shape clipping mode."  You can draw an arbitrary polygon
+with the mouse (clicking at each vertex), and then clip to the
+polygon.
+

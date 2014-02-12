@@ -1,0 +1,213 @@
+
+Scanalyze (version 1.0) license information
+-------------------------------------------
+
+Scanalyze is copyright (c) 2002 the Board of Trustees of The Leland
+Stanford Junior University. All rights reserved.
+
+This software is covered by the Stanford Computer Graphics Laboratory's
+General Software License. This license is royalty-free, nonexclusive,
+and nontransferable.  The terms and conditions of this license are
+viewable at this URL:
+
+   http://graphics.stanford.edu/software/license.html
+
+
+The scanalyze software also builds upon a number of 3rd party
+software components, some of which may be copyrighted:
+
+1. Togl
+2. Tcl/Tk
+3. STL
+4. Template Numerical Toolkit (TNT)
+5. Janne Heikkila's Camera Calibration Toolbox
+6. Graphics Gems
+7. Miscellaneous SGI code
+
+Further information about each of these software components and
+their terms of usage is included below:
+
+----------------------------------------------------------------------
+
+1. Togl (files togl.[c,h] in the scanalyze source distribution)
+
+Copyright (C) 1996-2000 Brian Paul and Ben Bederson
+
+This software is copyrighted by Brian Paul (brianp@elastic.avid.com)
+and Benjamin Bederson (bederson@cs.umd.edu).  The following
+terms apply to all files associated with the software unless explicitly
+disclaimed in individual files.
+
+The authors hereby grant permission to use, copy, modify, distribute,
+and license this software and its documentation for any purpose, provided
+that existing copyright notices are retained in all copies and that this
+notice is included verbatim in any distributions. No written agreement,
+license, or royalty fee is required for any of the authorized uses.
+Modifications to this software may be copyrighted by their authors
+and need not follow the licensing terms described here, provided that
+the new terms are clearly indicated on the first page of each file where
+they apply.
+
+IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
+FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
+DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE
+IS PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE
+NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
+MODIFICATIONS.
+
+-------------------------------------------------------------------------
+
+2. Tcl/Tk (files "tk*" in the scanalyze source distribution)
+
+This software is copyrighted by the Regents of the University of
+California, Sun Microsystems, Inc., Scriptics Corporation,
+and other parties.  The following terms apply to all files associated
+with the software unless explicitly disclaimed in individual files.
+
+The authors hereby grant permission to use, copy, modify, distribute,
+and license this software and its documentation for any purpose, provided
+that existing copyright notices are retained in all copies and that this
+notice is included verbatim in any distributions. No written agreement,
+license, or royalty fee is required for any of the authorized uses.
+Modifications to this software may be copyrighted by their authors
+and need not follow the licensing terms described here, provided that
+the new terms are clearly indicated on the first page of each file where
+they apply.
+
+IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
+FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
+DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE
+IS PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE
+NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
+MODIFICATIONS.
+
+GOVERNMENT USE: If you are acquiring this software on behalf of the
+U.S. government, the Government shall have only "Restricted Rights"
+in the software and related documentation as defined in the Federal 
+Acquisition Regulations (FARs) in Clause 52.227.19 (c) (2).  If you
+are acquiring the software on behalf of the Department of Defense, the
+software shall be classified as "Commercial Computer Software" and the
+Government shall have only "Restricted Rights" as defined in Clause
+252.227-7013 (c) (1) of DFARs.  Notwithstanding the foregoing, the
+authors grant the U.S. Government and others acting in its behalf
+permission to use and distribute the software in accordance with the
+terms specified in this license. 
+
+-------------------------------------------------------------------------
+
+3. STL (files auxlibs/include/stl/* in the scanalyze source distribution)
+
+/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Hewlett-Packard Company makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided "as is" without express or implied warranty.
+ *
+ *
+ * Copyright (c) 1996,1997
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Silicon Graphics makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided "as is" without express or implied warranty.
+ */
+
+-------------------------------------------------------------------------
+
+4. Template Numerical Toolkit (TNT)  (files auxlibs/include/tnt/* in the
+                                      scanalyze source distribution)
+
+This software was developed at the National Institute of Standards and
+Technology (NIST) by employees of the Federal Government in the course of
+their official duties. Pursuant to title 17 Section 105 of the United
+States Code this software is not subject to copyright protection and is
+in the public domain. NIST assumes no responsibility whatsoever for its
+use by other parties, and makes no guarantees, expressed or implied, about
+its quality, reliability, or any other characteristic.
+
+We would appreciate acknowledgement if the software is incorporated in
+redistributable libraries or applications.
+
+-------------------------------------------------------------------------
+
+5. Janne Heikkila's Camera Calibration Toolbox
+   (files imagealign/matlab/heikkila/* in the scanalyze source distribution)
+
+   http://www.ee.oulu.fi/~jth/calibr/
+
+-------------------------------------------------------------------------
+
+6. Graphics Gems
+
+Several sections of code in the scanalyze distribution are derived
+from the "Graphics Gems" series of books.
+
+   http://www.acm.org/pubs/tog/GraphicsGems/
+
+-------------------------------------------------------------------------
+
+7. Miscellaneous SGI code (jitter.[c,h], accpersp.c, Refcount.[cc,h] in
+                           the scanalyze source distribution)
+
+/*
+ * (c) Copyright 1993, Silicon Graphics, Inc.
+ * ALL RIGHTS RESERVED 
+ * Permission to use, copy, modify, and distribute this software for 
+ * any purpose and without fee is hereby granted, provided that the above
+ * copyright notice appear in all copies and that both the copyright notice
+ * and this permission notice appear in supporting documentation, and that 
+ * the name of Silicon Graphics, Inc. not be used in advertising
+ * or publicity pertaining to distribution of the software without specific,
+ * written prior permission. 
+ *
+ * THE MATERIAL EMBODIED ON THIS SOFTWARE IS PROVIDED TO YOU "AS-IS"
+ * AND WITHOUT WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR OTHERWISE,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY OR
+ * FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL SILICON
+ * GRAPHICS, INC.  BE LIABLE TO YOU OR ANYONE ELSE FOR ANY DIRECT,
+ * SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY
+ * KIND, OR ANY DAMAGES WHATSOEVER, INCLUDING WITHOUT LIMITATION,
+ * LOSS OF PROFIT, LOSS OF USE, SAVINGS OR REVENUE, OR THE CLAIMS OF
+ * THIRD PARTIES, WHETHER OR NOT SILICON GRAPHICS, INC.  HAS BEEN
+ * ADVISED OF THE POSSIBILITY OF SUCH LOSS, HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE
+ * POSSESSION, USE OR PERFORMANCE OF THIS SOFTWARE.
+ * 
+ * US Government Users Restricted Rights 
+ * Use, duplication, or disclosure by the Government is subject to
+ * restrictions set forth in FAR 52.227.19(c)(2) or subparagraph
+ * (c)(1)(ii) of the Rights in Technical Data and Computer Software
+ * clause at DFARS 252.227-7013 and/or in similar or successor
+ * clauses in the FAR or the DOD or NASA FAR Supplement.
+ * Unpublished-- rights reserved under the copyright laws of the
+ * United States.  Contractor/manufacturer is Silicon Graphics,
+ * Inc., 2011 N.  Shoreline Blvd., Mountain View, CA 94039-7311.
+ *
+ * OpenGL(TM) is a trademark of Silicon Graphics, Inc.
+ */
+
+-------------------------------------------------------------------------
+

@@ -1,0 +1,8 @@
+"Move the camera view mode."
+
+In this mode, your mouse actions in the main window will move the
+camera (viewer).  Drag the left mouse button to rotate, middle
+mouse button to translate, and both together (drag up and down)
+to dolly forward and backward.
+
+

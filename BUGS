@@ -1,0 +1,43 @@
+
+* In the Mesh->Resolutions->Other dialog box showing the different
+  mesh resolutions, selecting "Delete" sometimes results in an
+  unexpected error message (especially when deleting the lowest
+  resolution mesh).
+
+* CyberScan Preview is meaningless when no CyberScans are loaded
+
+* Can the IRIX version be made to compile with gcc/g++, instead
+  of requiring CC/cc (which are expensive!) ???
+
+* Why not just package things up into a single executable file,
+  using FreeWrap, ProWrap, etc., for the binary distributions, to
+  avoid all the hassle of the Tcl/Tk dependencies?
+
+* Saving/loading image files doesn't work on Linux version
+  (no IFL library)
+
+* "Open SD scan directory" doesn't work properly on filenames
+  such as "bogus..sd".  This might just be a TCL bug or version
+  problem...the version of TCL linked with scanalyze evaluates
+  [file extension bogus..sd] as "..sd", whereas when I just run
+  tclsh, this expression evaluates to ".sd".
+
+* If the Windows scanalyze.opt32.exe version is compiled using
+  "make opt32", then the program will crash when asked to do
+  a line depth plot.  This problem can be avoided by compiling
+  the file "plvAnalyze.cc" separately, without the optimization
+  flags.
+
+* ZBuffer readbacks don't seem to work at all sometimes; this
+  has been observed on both Windows and Linux when using GeForce3/4
+  graphics.  It might be a graphics timing issue; often just rerunning
+  Scanalyze a second time avoids the problem.  Printing out the
+  min/max Zbuffer values that Scanalyze computes during initialization
+  may shed some light on this problem.
+
+* In plvMain.cc, see "BUGBUG" for forward declaration of isPlyFile. This is a
+  compiler bug, it shouldn't be needed since it is in ply++.h
+
+* In plvCmds.cc, see "BUGBUG" for forward declaration of class Scene. This is
+  a compiler bug, it shouldn't be needed since it is in plvScene.h
+

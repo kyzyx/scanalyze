@@ -1,0 +1,4 @@
+"Choose center of rotation" mode, where you can then click on the
+mesh, and the point you click will become the new center of rotation.
+It also becomes the depth toward which you zoom in/out.
+

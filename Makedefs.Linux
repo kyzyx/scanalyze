@@ -1,0 +1,50 @@
+#
+# Versions
+#
+
+ALLVERSIONS = debug opt
+DEFAULTVERSION = debug
+
+
+#
+# Compiler choice, and target and optimization options
+#    Looks at BUILD (set by the top-level Makefile in recursive invocations of
+#    make) to determine the correct options to use
+#
+
+ifneq (,$(findstring opt,$(BUILD)))
+  OPTIMIZER = -O1 -ffast-math
+else
+  OPTIMIZER = -g
+endif
+
+TARGET = -march=i686
+
+CC = gcc -w
+CXX = g++ -fno-for-scope -fpermissive -fwritable-strings -w
+LINK = $(CXX) $(TARGET)
+
+
+#
+# Paths (include, library paths) and libraries
+#
+
+INCLUDES += -I../.. \
+	    -I../../auxlibs/include/tnt
+
+LIBPATHS = -L../../auxlibs/lib/Linux -L/usr/lib -L/usr/X11R6/lib
+
+# Update: 
+LIBS =  -ltk8.0 -ltcl8.0 -lGLU -lGL \
+	-lX11 -lXext -lXmu -lz -lm
+AUXLIBS =
+
+
+#
+# Final compiler options
+#
+
+ALLFLAGS = $(OPTIMIZER) $(INCLUDES) $(TARGET) -MMD
+CFLAGS = $(ALLFLAGS) -D_BOOL
+CXXFLAGS = $(ALLFLAGS)
+

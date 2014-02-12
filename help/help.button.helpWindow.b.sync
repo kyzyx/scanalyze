@@ -1,0 +1,15 @@
+This button can be used to sync with the CVS repository.
+
+If you run scanalyze from your own directory, don't worry
+about it since you will check in files eventually anyway.
+
+If you run the generic version of scanalyze, this can be
+used to get you the newest help, also to check in files
+you have written.
+
+It just does a
+cvs add SCANALYZE_DIR/help/*
+cvs update SCANALYZE_DIR/help
+cvs commit SCANALYZE_DIR/help
+
+

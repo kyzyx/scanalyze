@@ -1,0 +1,101 @@
+#!gmake
+
+# try to use sh instead of command.com, if it can be found
+# (make will determine this for itself; just put sh.exe on your path)
+# This makefile currently won't work unless you do have sh.
+SHELL = sh
+
+
+#
+# Versions
+#
+
+ALLVERSIONS = debug32 opt32
+DEFAULTVERSION = debug32
+
+
+#
+# Compiler choice and options
+#
+
+# /Zi is debug, /O2 is optimize, /Gi is incremental compiler,
+OPTIMIZER = /Gi
+
+ifneq (,$(findstring opt,$(BUILD)))
+	OPTIMIZER += /O2
+else
+	OPTIMIZER += /Zi
+endif
+
+TARGET = -DWIN32 -nologo
+
+LINKOPT = /INCREMENTAL:YES /DEBUG
+# The console situation here is kind of a mess; Tk doesn't seem to get its
+# message pump/event loop working correctly with a real Windows console,
+# so it has a way to provide one, but then some output goes to one and
+# some to the other.  Plus if we link with /SUBSYS:WINDOWS, it allocates a
+# new console even if you run it from a console window; if you link with
+# /SUBSYS:CONSOLE, you don't have this problem but the message loop is
+# hosed. Solution: link as console app but with WinMain as entry point,
+# which contains important init code for the GUI console. We still have
+# two separate consoles for output, I don't know a way around this, but at
+# least it doesn't create a 3rd console if it can reuse the current one!
+LINKOPT += /SUBSYSTEM:CONSOLE /ENTRY:WinMainCRTStartup
+
+CC = cl
+CXX = cl
+LINK = link $(LINKOPT)
+
+
+#
+# Paths (include, library paths) and libraries
+#
+
+EXTRA_INCLUDE = auxlibs/include
+
+ifdef SYSTEMDRIVE
+SystemDrive := $(SYSTEMDRIVE)
+endif
+PROGFILES = $(SystemDrive)/Program\ Files
+
+TCL = $(PROGFILES)/Tcl/
+IFL = $(PROGFILES)/Silicon\ Graphics/IFL\ 1.3.1/
+
+INCLUDES += -I$(IFL)/include \
+	    -I$(TCL)/include
+
+
+# STL: included copy on VC6; downloaded SGI version, because a lot of
+# the code includes <vector.h>, etc. and the new version
+# with MSVC6 only includes <vector>, not <vector.h>.
+# We could probably change all the code to the new style,
+# but it compiles and runs the way it is if you include
+# both stl's on the include search path (Microsoft's first
+# so in case of collision, it chooses its own -- some of
+# the SGI version fails to compile on VC).
+# Also, the SGI implementation includes hash classes which are not part of 
+# the STL proper and are not included by Microsoft.
+INCLUDES += -I$(PROGFILES)/Microsoft\ Visual\ Studio/VC98/include
+INCLUDES +=  -I. \
+	-I$(EXTRA_INCLUDE)/stl \
+        -I$(EXTRA_INCLUDE)/tnt
+
+
+LIBPATHS = -LIBPATH:$(TCL)/lib -LIBPATH:$(IFL)/lib
+
+LIBS =	kernel32.lib user32.lib gdi32.lib \
+	tcl80vc.lib tk80vc.lib opengl32.lib glu32.lib ifl0.lib
+
+
+#
+# Final compiler options
+#
+
+# /FI flag forces winGLdecs.h and noDumbWinWarnings.h into every source file
+ALLFLAGS = $(OPTIMIZER) $(INCLUDES) $(TARGET) /FIwinGLdecs.h /FInoDumbWinWarnings.h
+CFLAGS = $(ALLFLAGS) -D_BOOL
+
+# /TP is treat as C++ regardless of extension (otherwise doesn't know .cc)
+# /GX is enable exception handling (STL needs it)
+# /GR is enable RTTI (dynamic_cast<>)
+CXXFLAGS = $(ALLFLAGS) /TP /GX /GR

@@ -1,0 +1,28 @@
+Context sensitive online help system.
+
+Just mouse over menus or buttons to get 
+available help in this window.
+
+Any user can update help at any time by
+hitting the save button.
+
+Use the toggle help menu option or ^H
+hotkey to toggle help on and off.
+
+The sync_CVS button can be used to sync with the CVS repository.
+
+	If you run scanalyze from your own directory, don't worry
+	about it since you will check in files eventually anyway.
+
+	If you run the generic version of scanalyze, this can be
+	used to get you the newest help, also to check in files
+	you have written.
+
+	It just does a
+	cvs add SCANALYZE_DIR/help/*
+	cvs update SCANALYZE_DIR/help
+	cvs commit SCANALYZE_DIR/help
+
+
+
+

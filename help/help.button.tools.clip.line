@@ -1,0 +1,4 @@
+"Line-drawing mode".  Useful for drawing a line, and then "analyzing depth"
+of the line.  (See Commands->Analyze line for depth.)
+
+

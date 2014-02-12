@@ -1,0 +1,4 @@
+Automatically set the center of rotation to be the center of the
+bounding box of all geometry in the scene.  This point also becomes
+the depth toward which you zoom in/out.
+

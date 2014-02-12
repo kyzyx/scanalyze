@@ -1,0 +1,9 @@
+"Select Visible Scans Mode."
+
+In this mode, draw a rectangle with the left mouse button.  When you
+confirm with the middle mouse button, all meshes that do not have any pixels
+visible in the rectangle will be hidden (not drawn).  This routine reads
+the pixel values.  It is more aggressive than selectScan, because it will
+turn off any meshes that are backfacing or occluded, even if they fall
+within the rectangle.
+

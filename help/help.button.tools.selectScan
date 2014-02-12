@@ -1,0 +1,9 @@
+"Select Scan Mode."
+
+In this mode, draw a rectangle with the left mouse button.  When you
+confirm with the middle mouse button, all meshes completely outside the
+drawn rectangle will be hidden (not drawn).  This routine uses bounding
+boxes, so it grabs all meshes within the box, whether they are currently
+visible or not.  This is not as aggressive as selectVisScan.
+
+

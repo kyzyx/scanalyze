@@ -1,0 +1,69 @@
+#!/bin/csh -f
+
+if ($#argv == 0) then
+	echo ''
+	echo 'Usage: mesh.ply im.tsai [im2.tsai ...]'
+	echo ' Pastes im.rgb.. onto mesh.ply, using the transform in im.tsai'
+	echo ''
+	exit
+endif
+
+set MESH=$argv[1]
+shift
+
+# Start looping though image files
+set TMPFILE = /tmp/tsai2cply$$
+foreach file ($argv)
+	echo Processing $file ...
+
+	# Set up the conf file for paste_color
+#	cat /mich4/uvdavid/bin/pasteconf > $TMPFILE
+	cat > $TMPFILE << DONE
+plyunits = millimeters
+
+neardist = 400
+fardist = 100000
+do_light_processing = no
+depth_thresh = 0.9
+write_ply_normals = no
+write_ply_tstrips = no
+dynam_range_feather = 0
+DONE
+
+	echo readply \"${MESH}\" 	>> $TMPFILE
+	echo camera \"${file}\" >> $TMPFILE
+	echo processimage \"${file:r}.rgb\" >> $TMPFILE
+	echo writeply \"${file:r}.c.ply\" >> $TMPFILE
+
+	# Paste color
+	if ( -e "${file:r}.c.ply" || -e "${file:r}.cs.ply" ) then
+		echo ${file:r}.c.ply already exists.
+	else
+		pastecolor $TMPFILE
+	endif
+
+	# Fix up the ply file the results
+	if ( -e "${file:r}.cs.ply" ) then
+		echo ${file:r}.cs.ply already exists
+	else
+		echo "Cropping ${file:r}.c.ply"
+		# Throw away all the points that didn't get colored
+		# plyconfcrop ${file:r}.c.ply >! ${file:r}.cs.ply
+		mv ${file:r}.c.ply ${file:r}.cs.ply
+		# convert to multi-res set
+		echo "Crunching ${file:r}.c.ply"
+		ply2crunchset ${file:r}.cs.ply
+		# plystrip everything for faster loading
+		echo "Stripping ${file:r}.c.ply"
+		foreach i (${file:r}.cs.*.ply)
+			plystrip -s -q $i >! tmp.ply
+			/bin/mv tmp.ply $i
+		end
+		echo "Done with ${file:r}.c.ply"
+	endif
+
+end
+
+# Remove the TMPFILE
+rm $TMPFILE
+
