@@ -1,4 +1,4 @@
-#include <tk/tk.h>
+#include <tk.h>
 #include <stdlib.h>
 #include <malloc.h>
 #ifdef WIN32
