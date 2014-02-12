@@ -8,14 +8,15 @@
 #define _pnt3_h
 
 #include<math.h>
-#include<assert.h>
-#include<iostream.h>
+#include<iostream>
 #ifdef WIN32
 #include<float.h>
 #endif
 #ifdef sgi
 #include<ieeefp.h>
 #endif
+
+using namespace std;
 
 #ifdef sun
 #define sqrtf(x) sqrt(x)
@@ -1054,7 +1055,7 @@ Vec3::xform(float r[3][3])
 
 #ifdef PNT3_MAIN
 
-#include <iostream.h>
+#include <iostream>
 #define SHOW(X) cout << #X " = " << X << endl
 
 void

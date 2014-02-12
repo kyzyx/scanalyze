@@ -9,7 +9,7 @@
 #ifndef _KDINDTREE_H_
 #define _KDINDTREE_H_
 #include "Pnt3.h"
-#include <vector.h>
+#include <vector>
 
 // factory:
 class KDindtree* CreateKDindtree (const Pnt3* pts,

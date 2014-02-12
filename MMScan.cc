@@ -27,8 +27,8 @@
 
 #include "Random.h"
 #include <stdio.h>
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #include "sys/stat.h"
 
 #include "plvScene.h"

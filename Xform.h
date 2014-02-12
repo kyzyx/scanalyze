@@ -10,9 +10,9 @@
 #include <assert.h>
 #include <math.h>
 #include <float.h>
-#include <iostream.h>
-#include <iomanip.h>
-#include <algo.h>
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
 #include "Pnt3.h"
 
 

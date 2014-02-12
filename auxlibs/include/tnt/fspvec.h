@@ -19,12 +19,12 @@
 #include "vec.h"
 #include <stdlib.h>
 #include <assert.h>
-#include <iostream.h>
+#include <iostream>
 #include <strstream.h>
 
 
 template <class T>
-class Fortran_sparse_vector
+class Fortran_sparse_vector 
 {
 
 
@@ -40,7 +40,7 @@ class Fortran_sparse_vector
     typedef const   T&  const_reference;
 
     Subscript lbound() const { return 1;}
-
+ 
   protected:
     Vector<T>   val_;
     Vector<Subscript> index_;
@@ -65,13 +65,13 @@ class Fortran_sparse_vector
     // constructors
 
     Fortran_sparse_vector() : val_(), index_(), dim_(0)  {};
-    Fortran_sparse_vector(Subscript N, Subscript nz) : val_(nz),
+    Fortran_sparse_vector(Subscript N, Subscript nz) : val_(nz), 
             index_(nz), dim_(N)  {};
     Fortran_sparse_vector(Subscript N, Subscript nz, const T *values,
         const Subscript *indices): val_(nz, values), index_(nz, indices),
             dim_(N) {}
 
-    Fortran_sparse_vector(const Fortran_sparse_vector<T> &S):
+    Fortran_sparse_vector(const Fortran_sparse_vector<T> &S): 
         val_(S.val_), index_(S.index_), dim_(S.dim_) {}
 
     // initialize from string, e.g.
@@ -80,7 +80,7 @@ class Fortran_sparse_vector
     //
     Fortran_sparse_vector(Subscript N, Subscript nz, char *v,
         char *ind) : val_(nz, v), index_(nz, ind), dim_(N) {}
-
+    
     // assignments
 
     Fortran_sparse_vector<T> & newsize(Subscript N, Subscript nz)
@@ -113,7 +113,7 @@ class Fortran_sparse_vector
 template <class T>
 ostream& operator<<(ostream &s, const Fortran_sparse_vector<T> &A)
 {
-    // output format is :   N nz val1 ind1 val2 ind2 ...
+    // output format is :   N nz val1 ind1 val2 ind2 ... 
     Subscript nz=A.num_nonzeros();
 
     s <<  A.dim() << " " << nz << endl;
@@ -129,7 +129,7 @@ ostream& operator<<(ostream &s, const Fortran_sparse_vector<T> &A)
 template <class T>
 istream& operator>>(istream &s, Fortran_sparse_vector<T> &A)
 {
-    // output format is :   N nz val1 ind1 val2 ind2 ...
+    // output format is :   N nz val1 ind1 val2 ind2 ... 
 
     Subscript N;
     Subscript nz;

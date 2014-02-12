@@ -16,7 +16,7 @@
 #define _TRIOCTREE_H_
 
 #include "Pnt3.h"
-#include <vector.h>
+#include <vector>
 #include <stack.h>
 
 class TriOctree {

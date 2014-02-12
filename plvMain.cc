@@ -1,4 +1,4 @@
-#include <tk.h>
+#include <tk/tk.h>
 #include <stdlib.h>
 #include <malloc.h>
 #ifdef WIN32
@@ -7,7 +7,7 @@
 #  include <unistd.h>
 #endif
 
-#include <vector.h>
+#include <vector>
 #include <string>
 #include "plvScene.h"
 #include "ply++.h"
@@ -23,6 +23,7 @@
 // so I can free the saved image used to emulate overlay planes
 #include "plvDraw.h"
 #endif
+using namespace std;
 
 vector<char*> filenames;
 
@@ -366,7 +367,7 @@ puts ("about to plvinit");
 	// now load in any groups
        }
     }
-    // center camera on all meshes; set home to this view
+    // center camera on all meshes; setome to this view
     theScene->centerCamera();
     theScene->setHome();
     TbObj::clear_undo();

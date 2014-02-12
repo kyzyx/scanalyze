@@ -17,7 +17,7 @@
 #include "vec.h"
 #include <stdlib.h>
 #include <assert.h>
-#include <iostream.h>
+#include <iostream>
 #include <strstream.h>
 #ifdef TNT_USE_REGIONS
 #include "region2d.h"
@@ -26,7 +26,7 @@
 // simple 1-based, column oriented Matrix class
 
 template <class T>
-class Fortran_matrix
+class Fortran_matrix 
 {
 
 
@@ -41,7 +41,7 @@ class Fortran_matrix
     typedef const   T&  const_reference;
 
     Subscript lbound() const { return 1;}
-
+ 
   protected:
     T* v_;                  // these are adjusted to simulate 1-offset
     Subscript m_;
@@ -67,16 +67,16 @@ class Fortran_matrix
 
         m_ = M;
         n_ = N;
-        T* p = v_ - 1;
+        T* p = v_ - 1;              
         for (Subscript i=0; i<N; i++)
         {
             col_[i] = p;
             p += M ;
-
+            
         }
-        col_ --;
+        col_ --; 
     }
-
+   
     void copy(const T*  v)
     {
         Subscript N = m_ * n_;
@@ -100,7 +100,7 @@ class Fortran_matrix
 
         for (i=0; i< N; i++)
             v_[i] = v[i];
-#endif
+#endif      
     }
 
     void set(const T& val)
@@ -117,7 +117,7 @@ class Fortran_matrix
             v_[i] = val;
             v_[i+1] = val;
             v_[i+2] = val;
-            v_[i+3] = val;
+            v_[i+3] = val; 
         }
 
         for (i=N4; i< N; i++)
@@ -126,19 +126,19 @@ class Fortran_matrix
 
         for (i=0; i< N; i++)
             v_[i] = val;
-
-#endif
+        
+#endif      
     }
-
+    
 
 
     void destroy()
-    {
+    {     
         /* do nothing, if no memory has been previously allocated */
         if (v_ == NULL) return ;
 
         /* if we are here, then matrix was previously allocated */
-        delete [] (v_);
+        delete [] (v_);     
         col_ ++;                // changed back to 0-offset
         delete [] (col_);
     }
@@ -213,21 +213,21 @@ class Fortran_matrix
 
         return *this;
     }
-
+        
     Fortran_matrix<T>& operator=(const T& scalar)
-    {
-        set(scalar);
+    { 
+        set(scalar); 
         return *this;
     }
 
 
-    Subscript dim(Subscript d) const
+    Subscript dim(Subscript d) const 
     {
 #ifdef TNT_BOUNDS_CHECK
        assert( d >= 1);
         assert( d <= 2);
 #endif
-        return (d==1) ? m_ : ((d==2) ? n_ : 0);
+        return (d==1) ? m_ : ((d==2) ? n_ : 0); 
     }
 
     Subscript num_rows() const { return m_; }
@@ -249,14 +249,14 @@ class Fortran_matrix
     // 1-based element access
     //
     inline reference operator()(Subscript i, Subscript j)
-    {
+    { 
 #ifdef TNT_BOUNDS_CHECK
         assert(1<=i);
         assert(i <= m_) ;
         assert(1<=j);
         assert(j <= n_);
 #endif
-        return col_[j][i];
+        return col_[j][i]; 
     }
 
     inline const_reference operator() (Subscript i, Subscript j) const
@@ -267,7 +267,7 @@ class Fortran_matrix
         assert(1<=j);
         assert(j <= n_);
 #endif
-        return col_[j][i];
+        return col_[j][i]; 
     }
 
     friend istream& operator>>(istream &s, Fortran_matrix<T> &A);
@@ -345,7 +345,7 @@ istream& operator>>(istream &s, Fortran_matrix<T> &A)
 
 
 template <class T>
-Fortran_matrix<T> operator+(const Fortran_matrix<T> &A,
+Fortran_matrix<T> operator+(const Fortran_matrix<T> &A, 
     const Fortran_matrix<T> &B)
 {
     Subscript M = A.num_rows();
@@ -365,7 +365,7 @@ Fortran_matrix<T> operator+(const Fortran_matrix<T> &A,
 }
 
 template <class T>
-Fortran_matrix<T> operator-(const Fortran_matrix<T> &A,
+Fortran_matrix<T> operator-(const Fortran_matrix<T> &A, 
     const Fortran_matrix<T> &B)
 {
     Subscript M = A.num_rows();
@@ -389,7 +389,7 @@ Fortran_matrix<T> operator-(const Fortran_matrix<T> &A,
 //
 //
 template <class T>
-Fortran_matrix<T> mult_element(const Fortran_matrix<T> &A,
+Fortran_matrix<T> mult_element(const Fortran_matrix<T> &A, 
     const Fortran_matrix<T> &B)
 {
     Subscript M = A.num_rows();
@@ -426,9 +426,9 @@ Fortran_matrix<T> transpose(const Fortran_matrix<T> &A)
 }
 
 
-
+    
 template <class T>
-inline Fortran_matrix<T> matmult(const Fortran_matrix<T>  &A,
+inline Fortran_matrix<T> matmult(const Fortran_matrix<T>  &A, 
     const Fortran_matrix<T> &B)
 {
 
@@ -450,21 +450,21 @@ inline Fortran_matrix<T> matmult(const Fortran_matrix<T>  &A,
         for (Subscript j=1; j<=N; j++)
             sum = sum +  A(i,j) * B(j,k);
 
-        tmp(i,k) = sum;
+        tmp(i,k) = sum; 
     }
 
     return tmp;
 }
 
 template <class T>
-inline Fortran_matrix<T> operator*(const Fortran_matrix<T> &A,
+inline Fortran_matrix<T> operator*(const Fortran_matrix<T> &A, 
     const Fortran_matrix<T> &B)
 {
     return matmult(A,B);
 }
 
 template <class T>
-inline int matmult(Fortran_matrix<T>& C, const Fortran_matrix<T>  &A,
+inline int matmult(Fortran_matrix<T>& C, const Fortran_matrix<T>  &A, 
     const Fortran_matrix<T> &B)
 {
 
@@ -477,7 +477,7 @@ inline int matmult(Fortran_matrix<T>& C, const Fortran_matrix<T>  &A,
     C.newsize(M,K);         // adjust shape of C, if necessary
 
 
-    T sum;
+    T sum; 
 
     const T* row_i;
     const T* col_k;
@@ -495,8 +495,8 @@ inline int matmult(Fortran_matrix<T>& C, const Fortran_matrix<T>  &A,
                 row_i += M;
                 col_k ++;
             }
-
-            C(i,k) = sum;
+        
+            C(i,k) = sum; 
         }
 
     }
@@ -525,7 +525,7 @@ Vector<T> matmult(const Fortran_matrix<T>  &A, const Vector<T> &x)
         for (Subscript j=1; j<=N; j++)
             sum = sum +  A(i,j) * x(j);
 
-        tmp(i) = sum;
+        tmp(i) = sum; 
     }
 
     return tmp;
@@ -543,7 +543,7 @@ inline Fortran_matrix<T> operator*(const Fortran_matrix<T>  &A, const T &x)
     Subscript M = A.num_rows();
     Subscript N = A.num_cols();
 
-    Subscript MN = M*N;
+    Subscript MN = M*N; 
 
     Fortran_matrix<T> res(M,N);
     const T* a = A.begin();
@@ -554,7 +554,7 @@ inline Fortran_matrix<T> operator*(const Fortran_matrix<T>  &A, const T &x)
         *t = *a * x;
 
     return res;
-}
+} 
 
 #endif
 // FMAT_H

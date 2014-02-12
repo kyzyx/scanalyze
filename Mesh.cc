@@ -1,9 +1,8 @@
-#include <iostream.h>
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include <vector.h>
-#include <hash_map.h>
+#include <vector>
 #include <assert.h>
 #include <math.h>
 

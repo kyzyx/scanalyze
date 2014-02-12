@@ -7,8 +7,8 @@
 //############################################################
 
 
-#include <vector.h>
-#include <algo.h>
+#include <vector>
+#include <algorithm>
 #include "RigidScan.h"
 #include "Mesh.h"
 #include "DisplayMesh.h"
@@ -609,9 +609,9 @@ DisplayableRealMesh::renderMeshArrays (void)
 #endif
       } else if (cache.bStrips) {
 // STL Update
-	vector<int>::const_iterator lenEnd = cache.StripInds[imesh].end();
+	vector<int>::iterator lenEnd = cache.StripInds[imesh].end();
 	vector<int>::const_iterator start = cache.mesh->tri_inds[imesh]->begin();
-	for (vector<int>::const_iterator len = cache.StripInds[imesh].begin();
+	for (vector<int>::iterator len = cache.StripInds[imesh].begin();
 	     len < lenEnd; len++) {
 	  glDrawElements (GL_TRIANGLE_STRIP, *len,
 			  GL_UNSIGNED_INT, &*start);
@@ -754,9 +754,9 @@ DisplayableRealMesh::buildStripInds (DrawData& cache)
       cache.StripInds.push_back (vector<int>());
       vector<int>& si = cache.StripInds.back();
 // STL Update
-      const vector<int>::iterator last = cache.mesh->tri_inds[imesh]->begin() - 1;
-      const vector<int>::iterator triEnd = cache.mesh->tri_inds[imesh]->end();
-      for (const vector<int>::iterator i = cache.mesh->tri_inds[imesh]->begin();
+      const vector<int>::const_iterator last = cache.mesh->tri_inds[imesh]->begin() - 1;
+      const vector<int>::const_iterator triEnd = cache.mesh->tri_inds[imesh]->end();
+      for (const vector<int>::const_iterator i = cache.mesh->tri_inds[imesh]->begin();
 	   i < triEnd; i++) {
 	if (*i == -1) { // end of strip
 	  si.push_back (i - last - 1);

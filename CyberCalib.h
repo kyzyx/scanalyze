@@ -14,9 +14,11 @@
 #ifndef CyberCalib_h_
 #define CyberCalib_h_
 
-#include <map.h>
-#include <rope.h>
+#include <map>
+#include <ext/rope>
 #include "Xform.h"
+
+using namespace __gnu_cxx;
 
 struct CyberCalib
 {

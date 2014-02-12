@@ -13,15 +13,17 @@
 # include "winGLdecs.h"
 #endif
 #include <GL/gl.h>
-#include <fstream.h>
-#include <iostream.h>
-#include <rope.h>
+#include <fstream>
+#include <iostream>
+#include <ext/rope>
 
 #include "Xform.h"
 #include "Pnt3.h"
 #include "Bbox.h"
 
 
+using namespace std;
+using namespace __gnu_cxx;
 class TbObj {
 private:
   struct TbRedoInfo {

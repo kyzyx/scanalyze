@@ -15,7 +15,7 @@
 #ifndef _MESHTRANSPORT_H_
 #define _MESHTRANSPORT_H_
 
-#include <vector.h>
+#include <vector>
 #ifdef WIN32
 #       include "winGLdecs.h"
 #endif

@@ -18,6 +18,7 @@ class DisplayableMesh;
 #include "DrawObj.h"
 #include "Pnt3.h"
 
+using namespace std;
 
 // Lines that represent each cross section of the auto analyze
 class Auto_a_Line : public DrawObj {

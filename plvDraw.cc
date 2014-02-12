@@ -4,8 +4,8 @@
 #endif
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include <algo.h>
-#include <vector.h>
+#include <algorithm>
+#include <vector>
 #include "plvDraw.h"
 #include "plvScene.h"
 #include "plvGlobals.h"

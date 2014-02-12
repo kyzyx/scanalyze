@@ -13,7 +13,7 @@
 //############################################################
 
 
-#include <fstream.h>
+#include <fstream>
 #include <sys/stat.h>
 #include "GenericScan.h"
 #include "defines.h"

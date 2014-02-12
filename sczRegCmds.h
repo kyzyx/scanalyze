@@ -9,7 +9,7 @@
 #ifndef _SCZ_REG_UI_
 #define _SCZ_REG_UI_
 
-#include <vector.h>
+#include <vector>
 class DisplayableMesh;
 class Pnt3;
 

@@ -35,7 +35,7 @@
 #include "TriMeshUtils.h"
 #include "plvScene.h"      // for meshes_written_stripped()
 #include "plvDraw.h"       // to know what color properties to write
-#include <fstream.h>       // for write_metadata
+#include <fstream>       // for write_metadata
 
 
 RigidScan::RigidScan()

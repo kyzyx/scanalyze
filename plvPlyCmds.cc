@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <vector.h>
+#include <vector>
 #include <ctype.h>
-#include <fstream.h>
+#include <fstream>
 
 #include "plvImageCmds.h"
 #include "plvGlobals.h"

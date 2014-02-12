@@ -1,6 +1,8 @@
 #include "plvGlobals.h"
 #include "TclCmdUtils.h"
 
+#include <cstring>
+#include <cstdlib>
 
 static bool
 boolFromString (char* str)

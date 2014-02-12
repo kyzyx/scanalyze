@@ -11,9 +11,9 @@
 //
 //############################################################
 
-#include <map.h>
-#include <stack.h>
-#include <deque.h>
+#include <map>
+#include <stack>
+#include <deque>
 #ifdef WIN32
 #	include <float.h>
 #	define isnanf _isnan

@@ -22,9 +22,11 @@
 #endif
 
 #include <string.h>
-#include <vector.h>
-//#include <rope.h>
+#include <vector>
+//#include <ext/rope>
 #include <string>
+
+using namespace std;
 
 class DirEntries {
 
@@ -127,7 +129,7 @@ public:
 
 #if 0
 
-#include <iostream.h>
+#include <iostream>
 
 void
 main(int argc, char **argv)

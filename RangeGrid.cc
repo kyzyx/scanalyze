@@ -5,7 +5,7 @@
 #include "plvGlobals.h"
 #include "RangeGrid.h"
 #include "Mesh.h"
-#include <iostream.h>
+#include <iostream>
 #ifdef WIN32
 #include <io.h>
 #endif
@@ -13,12 +13,14 @@
 #include <math.h>
 #include <fcntl.h>
 #ifndef linux
-#    include <stdexcept.h>
+#    include <stdexcept>
 #endif
 #include "cyfile.h"
 #include "defines.h"
 #include "Xform.h"
 #include "Pnt3.h"
+
+using namespace std;
 
 struct PlyVertex {
   float x,y,z;

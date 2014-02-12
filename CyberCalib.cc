@@ -17,8 +17,9 @@
 #include "CyberCalib.h"
 #include <stdlib.h>
 #include <ctype.h>
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
+#include <cstring>
 
 CyberCalib::CyberCalib()
 {

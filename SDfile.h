@@ -12,10 +12,11 @@
 #ifndef __SDFILE_H__
 #define __SDFILE_H__
 
-#include <rope.h>
-#include <fstream.h>
+#include <ext/rope>
+#include <fstream>
 #include "CyberXform.h"
 #include "Bbox.h"
+using namespace __gnu_cxx;
 class VertexFilter;
 typedef unsigned char uchar;
 

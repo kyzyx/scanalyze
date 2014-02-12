@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <vector.h>
+#include <vector>
 #include "Pnt3.h"
 
 void SVD(float **, int, int, float *, float **);

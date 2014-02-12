@@ -7,6 +7,7 @@
 #ifndef _MEDIAN_H_
 #define _MEDIAN_H_
 
+#include <cassert>
 #include <string.h>
 
 

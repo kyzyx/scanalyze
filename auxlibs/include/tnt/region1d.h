@@ -15,7 +15,7 @@
 
 #include "subscrpt.h"
 #include "index.h"
-#include <iostream.h>
+#include <iostream>
 #include <assert.h>
 
 

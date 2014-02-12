@@ -1,5 +1,5 @@
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #include <string>
 #ifdef WIN32
 #	include "winGLdecs.h"

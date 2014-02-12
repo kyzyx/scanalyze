@@ -10,8 +10,10 @@
 #ifndef _COLORUTILS_H_
 #define _COLORUTILS_H_
 
-#include "vector.h"
+#include <vector>
 #include "defines.h"
+
+using namespace std;
 
 class ColorSet
 {

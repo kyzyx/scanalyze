@@ -35,7 +35,7 @@ WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 */
 
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
@@ -82,7 +82,7 @@ int ply_type_size[] = {
 #if defined(WIN32) || defined(i386)
 #define NATIVE_ENDIANNES PLY_BINARY_LE
 #else
-#define NATIVE_ENDIANNES PLY_BINARY_BE
+#define NATIVE_ENDIANNES PLY_BINARY_LE
 #endif
 
 

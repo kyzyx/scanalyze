@@ -1,4 +1,4 @@
-#include <iostream.h>
+#include <iostream>
 #include <ctype.h>
 #include "plvGlobals.h"
 #include "RigidScan.h"

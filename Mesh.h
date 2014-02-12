@@ -2,11 +2,12 @@
 #define _MESH_
 
 #include <limits.h>
-#include <vector.h>
+#include <vector>
 #include "ResolutionCtrl.h"
 #include "defines.h"
 #include "Bbox.h"
-#include <set.h>
+#include <set>
+#include <cassert>
 
 typedef set<int, less<int> > TriList; // List of triangles attached to a single vtx
 typedef set<int, less<int> >::iterator TriListI;

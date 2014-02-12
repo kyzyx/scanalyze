@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "DirEntries.h"
-#include <fstream.h>
+#include <fstream>
 #ifdef WIN32
 #	include <float.h>
 #endif
@@ -35,7 +35,7 @@
 #include "Progress.h"
 #include "BailDetector.h"
 #include "ColorUtils.h"
-#include "algo.h"
+#include <algorithm>
 #include "MeshTransport.h"
 #include "VertexFilter.h"
 

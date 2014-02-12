@@ -9,9 +9,9 @@
 #ifndef _CONNCOMP_H_
 #define _CONNCOMP_H_
 
-#include <vector.h>
-#include <iostream.h>
-#include <iomanip.h>
+#include <vector>
+#include <iostream>
+#include <iomanip>
 
 
 //#define TEST_CONNCOMP

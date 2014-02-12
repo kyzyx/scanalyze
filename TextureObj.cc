@@ -10,7 +10,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
-#include <fstream.h>
+#include <fstream>
 #include <sys/types.h>
 #include <sys/stat.h>
 #ifndef linux

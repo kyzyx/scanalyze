@@ -2,7 +2,7 @@
 // created 1/30/99        magi@cs
 
 
-#include <vector.h>
+#include <vector>
 #include "DisplayMesh.h"
 #include "GroupScan.h"
 #include "plvScene.h"

@@ -10,9 +10,11 @@
 #ifndef _RESOLUTIONCTRL_H_
 #define _RESOLUTIONCTRL_H_
 
-#include <vector.h>
-#include <rope.h>
+#include <vector>
+#include <ext/rope>
 
+using namespace std;
+using namespace __gnu_cxx;
 class ResolutionCtrl {
 public:
   struct res_info {

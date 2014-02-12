@@ -1507,7 +1507,7 @@ static PlyProperty face_props[] = {
 struct tstrip_info {
   int nverts;
 // STL Update
-  const vector<int>::iterator vertData;
+  const vector<int>::const_iterator vertData;
 };
 
 static PlyProperty tstrips_props[] = {

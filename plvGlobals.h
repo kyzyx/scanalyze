@@ -7,7 +7,9 @@
 #endif
 #include "jitter.h"
 #include "ToglHash.h"
-#include <vector.h>
+#include <vector>
+
+using namespace std;
 
 class Scene;
 class DisplayableMesh;

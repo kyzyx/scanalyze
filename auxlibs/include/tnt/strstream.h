@@ -1,6 +1,6 @@
 /*ident	"@(#)ctrans:incl-master/const-headers/strstream.h	1.7" */
 /*******************************************************************************
-
+ 
 C++ source for the C++ Language System, Release 3.0.  This product
 is a new release of the original cfront developed in the computer
 science research center of AT&T Bell Laboratories.
@@ -17,12 +17,12 @@ any actual or intended publication of such source code.
 #define STRSTREAMH
 
 #ifndef IOSTREAMH
-#include <iostream.h>
+#include <iostream>
 #endif
 
 class strstreambuf : public streambuf
 {
-public:
+public: 
 			strstreambuf() ;
 			strstreambuf(int) ;
 			strstreambuf(void* (*a)(long), void (*f)(void*)) ;
@@ -41,7 +41,7 @@ public: /* virtuals  */
 	virtual int	underflow() ;
 	virtual streambuf*
 			setbuf(char*  p, int l) ;
-
+                        
 
 	virtual streampos
 //	virtual pos_type
@@ -69,12 +69,12 @@ public:
 class strstreambase : public virtual ios {
 public:
 	strstreambuf*	rdbuf() ;
-protected:
+protected:	
 			strstreambase(char*, int, char*) ;
 			strstreambase() ;
 			~strstreambase() ;
 private:
-	strstreambuf	buf ;
+	strstreambuf	buf ; 
 	} ;
 
 class istrstream : public strstreambase, public istream {

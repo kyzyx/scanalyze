@@ -14,8 +14,8 @@
  *
  */
 
-#include <iostream.h>
-#include <vector.h>
+#include <iostream>
+#include <vector>
 #include "Pnt3.h"
 
 

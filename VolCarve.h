@@ -12,7 +12,7 @@
 #ifndef _VOLCARVE_H_
 #define _VOLCARVE_H_
 
-#include <stack.h>
+#include <stack>
 #include "RigidScan.h"
 #include <math.h>
 

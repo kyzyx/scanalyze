@@ -8,7 +8,8 @@
 #define _Image_h
 
 /*** includes ***/
-#include <iostream.h>
+#include <iostream>
+using namespace std;
 
 typedef unsigned char uchar;
 

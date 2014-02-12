@@ -11,7 +11,7 @@
 #ifndef _FILENAMEUTILS_H_
 #define _FILENAMEUTILS_H_
 
-#include <iostream.h>
+#include <iostream>
 #include <string.h>
 #ifndef WIN32
 #	include <unistd.h>
@@ -30,6 +30,8 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
+using namespace std;
 
 inline bool
 get_filename_new_ending(const char* inName, const char* ext,

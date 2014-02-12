@@ -2,7 +2,7 @@
 #define _PLV_CLIP_BOX_CMDS_
 
 #include <tk.h>
-#include <vector.h>
+#include <vector>
 #include "VertexFilter.h"
 
 
@@ -21,7 +21,7 @@ class Selection
 
 // STL Update
   vector<Pt>::iterator iterator_at_index (int idx) { return pts.begin() + idx; };
-  const vector<Pt>::iterator iterator_at_index (int idx) const { return pts.begin() + (idx); };
+  //const vector<Pt>::iterator iterator_at_index (int idx) const { return pts.begin() + (idx); };
 
   // how to interpret the points?
   Type type;

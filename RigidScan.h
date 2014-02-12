@@ -33,8 +33,8 @@
 #ifndef _RIGID_SCAN_H_
 #define _RIGID_SCAN_H_
 
-#include <vector.h>
-#include <rope.h>
+#include <vector>
+#include <ext/rope>
 
 #include "ResolutionCtrl.h"
 #include "TbObj.h"

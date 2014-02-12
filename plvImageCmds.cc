@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <tk.h>
+#include <cstring>
 
 #include "plvGlobals.h"
 #include "plvImageCmds.h"

@@ -2,7 +2,7 @@
 #include "ply++.h"
 #include <stdlib.h>
 #include "strings.h"
-#include <iostream.h>
+#include <iostream>
 #include <limits.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -13,7 +13,7 @@
 #endif
 #include "timer.h"
 
-#include "vector.h"
+#include <vector>
 
 #include "Mesh.h"
 #include "plyio.h"

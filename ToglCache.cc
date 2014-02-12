@@ -3,7 +3,7 @@
 
 
 #include <assert.h>
-#include <iostream.h>
+#include <iostream>
 #include "togl.h"
 #include "ToglCache.h"
 #include "plvGlobals.h"

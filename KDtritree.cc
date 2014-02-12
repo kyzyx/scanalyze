@@ -118,7 +118,7 @@ KDtritree::KDtritree(const Pnt3 *pts, const int *triinds,
 }
 
 // STL Update
-KDtritree::KDtritree(const vector<Pnt3>::iterator pts, const vector<int>::iterator triinds,
+KDtritree::KDtritree(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator triinds,
 		     KDsphere *spheres, int n, int first)
 {
   int i;
@@ -223,7 +223,7 @@ KDtritree::_search(const Pnt3 *pts, const int *inds,
 
 // STL Update
 void
-KDtritree::_search(const vector<Pnt3>::iterator pts, const vector<int>::iterator inds,
+KDtritree::_search(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator inds,
 		   const Pnt3 &p, Pnt3 &cp, float &d2) const
 {
   if (child[0] == NULL) {
@@ -278,7 +278,7 @@ create_KDtritree(const Pnt3 *pts, const int *inds, int n)
 
 // STL Update
 KDtritree *
-create_KDtritree(const vector<Pnt3>::iterator pts, const vector<int>::iterator inds, int n)
+create_KDtritree(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator inds, int n)
 {
   assert(n%3==0);
   // first, create as many spheres as there are triangles

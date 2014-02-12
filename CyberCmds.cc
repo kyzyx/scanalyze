@@ -12,8 +12,8 @@
 //############################################################
 
 
-#include <vector.h>
-#include <fstream.h>
+#include <vector>
+#include <fstream>
 
 #include "Xform.h"
 #include "Pnt3.h"

@@ -14,12 +14,13 @@
 #include "CyberXform.h"
 #include "CyberCalib.h"
 #include <stdio.h>
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #ifdef WIN32
 #	include "defines.h"
 #endif
 
+using namespace __gnu_cxx;
 
 #define SHOW(X) cout << #X " = " << X << endl
 

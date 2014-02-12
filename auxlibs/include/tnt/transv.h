@@ -13,7 +13,7 @@
 #ifndef TRANSV_H
 #define TRANSV_H
 
-#include <iostream.h>
+#include <iostream>
 #include <assert.h>
 #include "vec.h"
 
@@ -81,7 +81,7 @@ Transpose_View<Matrix> Transpose_view(const Matrix &A)
 
 template <class Matrix, class T>
 Vector<T> matmult(
-    const Transpose_View<Matrix> & A,
+    const Transpose_View<Matrix> & A, 
     const Vector<T> &B)
 {
     Subscript  M = A.num_rows();

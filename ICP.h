@@ -16,9 +16,9 @@
 #	include "winGLdecs.h"
 #endif
 #include <GL/gl.h>
-#include <iostream.h>
-#include <algo.h>
-#include <vector.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 #include "Median.h"
 #include "absorient.h"
 #include "Xform.h"

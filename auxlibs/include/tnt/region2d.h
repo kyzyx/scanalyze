@@ -13,10 +13,10 @@
 #define REGION2D_H
 
 #include "index.h"
-#include <iostream.h>
+#include <iostream>
 #include <assert.h>
 
-// const_Region2D needs the T parameter -- cannot rely on
+// const_Region2D needs the T parameter -- cannot rely on 
 // Array2D::element_type for definition later. (possible compiler
 // g++ bug?)
 
@@ -133,8 +133,8 @@ class Region2D
             assert( A_.lbound() <= j1);
             assert( j2<= dim_[1] + A_.lbound()-1 );
 #endif
-            return Region2D<Array2D>(A_,
-                    i1+offset_[0], offset_[0] + i2,
+            return Region2D<Array2D>(A_, 
+                    i1+offset_[0], offset_[0] + i2, 
                     j1+offset_[1], offset_[1] + j2);
         }
 
@@ -181,7 +181,7 @@ class Region2D
 
         Region2D<Array2D> & operator=(const Region2D<Array2D> &R)
         {
-            Subscript M = num_rows();
+            Subscript M = num_rows(); 
             Subscript N = num_cols();
 
             // make sure both sides conform
@@ -201,7 +201,7 @@ class Region2D
 
         Region2D<Array2D> & operator=(const const_Region2D<Array2D,T> &R)
         {
-            Subscript M = num_rows();
+            Subscript M = num_rows(); 
             Subscript N = num_cols();
 
             // make sure both sides conform
@@ -221,7 +221,7 @@ class Region2D
 
         Region2D<Array2D> & operator=(const Array2D &R)
         {
-            Subscript M = num_rows();
+            Subscript M = num_rows(); 
             Subscript N = num_cols();
 
             // make sure both sides conform
@@ -296,7 +296,7 @@ class const_Region2D
         }
 
 
-        const_Region2D(const Array2D &A, Subscript i1, Subscript i2,
+        const_Region2D(const Array2D &A, Subscript i1, Subscript i2, 
                 Subscript j1, Subscript j2) : A_(A)
         {
 #ifdef TNT_BOUNDS_CHECK
@@ -314,7 +314,7 @@ class const_Region2D
             dim_[1] = j2-j1+1;
         }
 
-        const_Region2D(const Array2D &A, const Index1D &I, const Index1D &J)
+        const_Region2D(const Array2D &A, const Index1D &I, const Index1D &J) 
                 : A_(A)
         {
 #ifdef TNT_BOUNDS_CHECK
@@ -333,7 +333,7 @@ class const_Region2D
         }
 
 
-        const_Region2D(const_Region2D<Array2D,T> &A, Subscript i1,
+        const_Region2D(const_Region2D<Array2D,T> &A, Subscript i1, 
                 Subscript i2,
             Subscript j1, Subscript j2) : A_(A.A_)
         {
@@ -362,8 +362,8 @@ class const_Region2D
             assert( TNT_BASE_OFFSET <= j1);
             assert( j2<= dim_[0] + TNT_BASE_OFFSET-1 );
 #endif
-            return const_Region2D<Array2D,T>(A_,
-                    i1+offset_[0], offset_[0] + i2,
+            return const_Region2D<Array2D,T>(A_, 
+                    i1+offset_[0], offset_[0] + i2, 
                     j1+offset_[1], offset_[1] + j2);
         }
 

@@ -6,11 +6,12 @@
 // Global registration of several scans simultaneously
 //############################################################
 
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #include <stdlib.h>
-#include <multimap.h>
-#include <deque.h>
+#include <map>
+#include <deque>
+#include <iterator>
 // G++ Update
 #include <strstream>
 #include <sys/stat.h>

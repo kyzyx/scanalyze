@@ -14,9 +14,9 @@
 #include "CyraResLevel.h"
 #include <tcl.h>
 #include <stdio.h>
-#include <iostream.h>
-#include <fstream.h>
-#include <stack.h>
+#include <iostream>
+#include <fstream>
+#include <stack>
 #include <stdlib.h>
 #include "defines.h"
 #include "TriMeshUtils.h"

@@ -12,7 +12,7 @@
 
 class Pnt3;
 class TbObj;
-#include <vector.h>
+#include <vector>
 #include "Bbox.h"
 #include "Xform.h"
 #include "Projector.h"

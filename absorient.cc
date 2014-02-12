@@ -19,12 +19,12 @@
 // in approximate registration.
 //############################################################
 
-#include <math.h>
+#include "tnt.h"
+#include <cmath>
 #include <limits.h>
-#include <iostream.h>
+#include <iostream>
 #include "Pnt3.h"
 #include "Xform.h"
-#include "tnt.h"
 #include "vec.h"
 #include "cmat.h"
 #include "trislv.h"

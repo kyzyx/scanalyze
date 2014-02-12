@@ -14,7 +14,7 @@
 #ifndef _TRIMESHUTILS_H_
 #define _TRIMESHUTILS_H_
 
-#include <vector.h>
+#include <vector>
 #include "Pnt3.h"
 
 // calculate vertex normals by averaging from triangle

@@ -4,7 +4,7 @@
 // 03/06/97
 //############################################################
 
-#include <iostream.h>
+#include <iostream>
 #include <math.h>
 #include "Trackball.h"
 #include "Xform.h"

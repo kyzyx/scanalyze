@@ -13,7 +13,7 @@
 #ifndef _DRAWOBJ_H_
 #define _DRAWOBJ_H_
 
-#include <vector.h>
+#include <vector>
 #include <GL/gl.h>
 
 class DrawObj {

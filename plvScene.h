@@ -4,7 +4,7 @@
 
 #include "Bbox.h"
 #include "Pnt3.h"
-#include "vector.h"
+#include <vector>
 #include "ColorUtils.h"
 #include "Trackball.h"
 #include "plvGlobals.h"

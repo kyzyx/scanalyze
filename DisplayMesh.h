@@ -13,7 +13,7 @@
 #include "RigidScan.h"
 #include "TextureObj.h"
 #include "defines.h"
-#include <vector.h>
+#include <vector>
 
 
 class DisplayableOrganizingMesh;

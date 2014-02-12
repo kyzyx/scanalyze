@@ -12,9 +12,9 @@
 
 #include "CyraScan.h"
 #include <stdio.h>
-#include <iostream.h>
-#include <fstream.h>
-#include <stack.h>
+#include <iostream>
+#include <fstream>
+#include <stack>
 #include "defines.h"
 #include "TriMeshUtils.h"
 #include "KDindtree.h"

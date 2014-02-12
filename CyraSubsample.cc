@@ -18,9 +18,9 @@
 #include "KDindtree.h"
 #include "ColorUtils.h"
 #include <stdio.h>
-#include <iostream.h>
-#include <fstream.h>
-#include <stack.h>
+#include <iostream>
+#include <fstream>
+#include <stack>
 
 
 

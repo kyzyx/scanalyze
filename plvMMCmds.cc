@@ -6,11 +6,11 @@
 // ModelMaker scan commands
 //############################################################
 
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 #include <assert.h>
 #include <sys/stat.h>
-#include <fstream.h>
+#include <fstream>
 
 #include "Progress.h"
 #include "plvMMCmds.h"

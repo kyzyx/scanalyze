@@ -13,7 +13,7 @@
 #include <tcl.h>
 #include <string.h>
 #include <stdlib.h>
-#include <vector.h>
+#include <vector>
 #ifdef WIN32
 #	include "winGLdecs.h"
 #endif

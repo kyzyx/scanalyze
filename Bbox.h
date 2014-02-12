@@ -22,8 +22,8 @@
 #ifndef _Bbox_h
 #define _Bbox_h
 
-#include <vector.h>
-#include <iostream.h>
+#include <vector>
+#include <iostream>
 #include "Pnt3.h"
 
 

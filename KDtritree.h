@@ -10,7 +10,7 @@
 #ifndef _KDTRITREE_H_
 #define _KDTRITREE_H_
 #include "Pnt3.h"
-#include <vector.h>
+#include <vector>
 
 struct KDsphere {
   int   ind;
@@ -36,7 +36,7 @@ private:
   void _search(const Pnt3 *pts, const int *inds,
 	       const Pnt3 &p, Pnt3 &cp, float &d2) const;
 // STL Update
-  void _search(const vector<Pnt3>::iterator pts, const vector<int>::iterator inds,
+  void _search(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator inds,
 	       const Pnt3 &p, Pnt3 &cp, float &d2) const;
 
 public:
@@ -44,7 +44,7 @@ public:
   KDtritree(const Pnt3 *pts, const int *triinds,
 	    KDsphere *spheres, int n, int first = 1);
 // STL Update
-  KDtritree(const vector<Pnt3>::iterator pts, const vector<int>::iterator triinds,
+  KDtritree(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator triinds,
 	    KDsphere *spheres, int n, int first = 1);
 
   ~KDtritree();
@@ -63,7 +63,7 @@ public:
       }
     }
 // STL Update
-  bool search(const vector<Pnt3>::iterator pts, const vector<int>::iterator inds, const Pnt3 &p,
+  bool search(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator inds, const Pnt3 &p,
 	      Pnt3 &cp, float &d) const
     {
       float d2 = d*d;
@@ -82,6 +82,6 @@ KDtritree *
 create_KDtritree(const Pnt3 *pts, const int *inds, int n);
 // STL Update
 KDtritree *
-create_KDtritree(const vector<Pnt3>::iterator pts, const vector<int>::iterator inds, int n);
+create_KDtritree(const vector<Pnt3>::const_iterator pts, const vector<int>::const_iterator inds, int n);
 
 #endif
