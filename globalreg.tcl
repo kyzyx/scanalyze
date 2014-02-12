@@ -105,7 +105,7 @@ proc New_globalRegistrationDialog {} {
     #TODO: lots -- make old things work again, write new things
     #(or at least disable buttons that can't work)
     set pane [createTogglePane $gr globalreg "Show global alignment commands"]
-    set f [createOptionsPaneWithDoButton $pane globalalign]
+    set f [createOptionsPaneWithDoButton $pane align]
     set l [frame $f.buttonColumns]
     set c [frame $l.colFrom]
     label $c.l -text "Move:"

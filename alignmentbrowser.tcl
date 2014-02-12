@@ -113,7 +113,7 @@ proc AlignmentSummaryDialog {} {
     set nRow [lindex [grid size $main] 1]
     for {set ii 0} {$ii < $nCol} {incr ii} {
 	for {set i 0} {$i < $nRow} {incr i} {
-	    set widget [grid slaves $main -row $i -col $ii]
+	    set widget [grid slaves $main -row $i -column $ii]
 	    bind $widget <Button-1> "abs_clickEntry $main $i $ii"
 	}
 
@@ -121,7 +121,7 @@ proc AlignmentSummaryDialog {} {
 	# need redirection table, so that abs_clickEntry row col
 	# still works after resorting the rows.
 
-	set widget [grid slaves $header -row 2 -col $ii]
+	set widget [grid slaves $header -row 2 -column $ii]
 	bind $widget <Button-1> "abs_clickEntry $header -1 $ii"
     }
 }
@@ -132,14 +132,14 @@ proc abs_clickEntry {grid row col} {
 	set mesh *
 	set row 2
     } else {
-	set mesh [grid slaves $grid -row $row -col 0]
+	set mesh [grid slaves $grid -row $row -column 0]
 	set mesh [lindex [$mesh config -text] 4]
     }
 
     if {$col <= 1} {
 	set criteria "all pairings"
     } else {
-	set w [grid slaves $grid -row $row -col $col]
+	set w [grid slaves $grid -row $row -column $col]
 	set crit [string range $w [expr 1 + [string last _ $w]] end]
 
 	if {[string range $crit 0 2] == "err"} {
@@ -170,7 +170,7 @@ proc abm_buildframe {parent iRow mesh partner
 	if {$iCol < 2} {set dir w} else {set dir e}
 
 	set w [label ${f}_${widget} -text [set $widget] -anchor $dir]
-	grid $w -sticky $dir -row $iRow -col $iCol
+	grid $w -sticky $dir -row $iRow -column $iCol
 	incr iCol
     }
 
@@ -187,13 +187,13 @@ proc abs_buildframe {parent iRow mesh
     set f $parent.meshframe_${mesh}
 
     label ${f}_mesh -text $mesh -anchor w
-    grid ${f}_mesh -sticky w -row $iRow -col 0
+    grid ${f}_mesh -sticky w -row $iRow -column 0
 
     set iCol 1
     foreach widget {total man auto errmin erravg errmax q0 q1 q2 q3} {
 	set w [label ${f}_${widget} \
 		   -text [set $widget] -anchor e]
-	grid $w -sticky e -row $iRow -col $iCol
+	grid $w -sticky e -row $iRow -column $iCol
 	incr iCol
     }
 
@@ -221,8 +221,8 @@ proc ab_create3PaneWindow {parent vHeader vMain vFooter} {
     set header [frame $parent.header]
     set footer [frame $parent.footer]
     grid $header -row 0 -sticky news
-    grid $mover -row 1 -col 0 -sticky news
-    grid $bar -row 1 -col 1 -sticky nse
+    grid $mover -row 1 -column 0 -sticky news
+    grid $bar -row 1 -column 1 -sticky nse
     grid $footer - -row 2 -sticky news
     grid rowconfigure $parent 1 -weight 1
     grid columnconfigure $parent 0 -weight 1
@@ -260,7 +260,7 @@ proc grid_sortRows {grid iColumn args} {
 
 	#set slaves($i) [grid slaves $grid -row $i]
 	for {set i2 0} {$i2 < $nCols} {incr i2} {
-	    lappend slaves($i) [grid slaves $grid -row $i -col $i2]
+	    lappend slaves($i) [grid slaves $grid -row $i -column $i2]
 	}
 
 	set widget [lindex $slaves($i) $iColumn]
