@@ -9,11 +9,11 @@
 #ifndef _GLOBALREG_H_
 #define _GLOBALREG_H_
 
-#include <iostream.h>
-#include <hash_map.h>
-#include <hash_set.h>
-#include <vector.h>
-#include <rope.h>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+#include <ext/rope>
 #include <string>
 #include <time.h>
 #include "Random.h"
@@ -136,8 +136,8 @@ private:
 
   //hash_multimap<Key, Data, HashFcn, EqualKey, Alloc>
   typedef
-  hash_multimap<TbObj *,mapEntry*, hash_tbobj,equal_tbobj> HMM;
-  typedef hash_set<TbObj *,hash_tbobj,equal_tbobj> HS;
+  unordered_multimap<TbObj *,mapEntry*, hash_tbobj,equal_tbobj> HMM;
+  typedef unordered_set<TbObj *,hash_tbobj,equal_tbobj> HS;
   typedef HMM::iterator ITT;
   typedef HS::iterator  ITS;
 

@@ -231,7 +231,7 @@ DisplayCache::DC_ToglDisplay (struct Togl* togl)
 }
 
 
-#include <hash_map.h>
+#include <unordered_map>
 struct eqtoglptr
 {
   bool operator()(unsigned long t1, unsigned long t2) const
@@ -240,7 +240,7 @@ struct eqtoglptr
   }
 };
 
-typedef hash_map<unsigned long, DisplayCache*, hash<unsigned long>,
+typedef unordered_map<unsigned long, DisplayCache*, hash<unsigned long>,
   eqtoglptr> DCToglHash;
 
 static DCToglHash dcHash;

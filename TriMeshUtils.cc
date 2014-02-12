@@ -10,10 +10,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <iostream.h>
-#include <vector.h>
-#include <hash_map.h>
-#include <hash_set.h>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "TriMeshUtils.h"
 #include "Median.h"
@@ -403,7 +403,7 @@ old_tris_to_strips(const vector<int> &tris,
   tstripinds.reserve(1.1*nTris/3);
 
   // build a multimap: map edges to incident triangles
-  typedef hash_multimap<_edge,int,hash_edge,equal_edge> hmm;
+  typedef unordered_multimap<_edge,int,hash_edge,equal_edge> hmm;
   hmm edges;
   hmm::iterator edge_it;
   int i,j;
@@ -1054,7 +1054,7 @@ static void
 build_nbor_map(vecvec &nlist, const vector<int> &tris)
 {
   // build an edge set
-  typedef hash_set<_edge,hash_edge,equal_edge> hs;
+  typedef unordered_set<_edge,hash_edge,equal_edge> hs;
   hs edges;
   int n = tris.size();
   for (int i=0; i<n; i+=3) {
@@ -1257,8 +1257,8 @@ distance_from_boundary(vector<float> &distances,
   }
 
   // find the neighbors of bdry vertices
-  hash_set<int,hash<int>,equal_to<int> > prevset, workset, nextset;
-  hash_set<int,hash<int>,equal_to<int> >::const_iterator hcit;
+  unordered_set<int,hash<int>,equal_to<int> > prevset, workset, nextset;
+  unordered_set<int,hash<int>,equal_to<int> >::const_iterator hcit;
   for (i=0; i<n; i++) {
     if (bdry[i]) {
       for (int j=0; j<n_nbors[i]; j++) {

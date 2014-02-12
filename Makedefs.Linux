@@ -20,7 +20,7 @@ endif
 
 
 CC = gcc -w
-CXX = g++ -fno-for-scope -fpermissive -w -DPATH_MAX=256 -Dlinux
+CXX = g++ -fno-for-scope -fpermissive -w -std=c++0x -DPATH_MAX=256 -Dlinux
 LINK = $(CXX)
 
 
