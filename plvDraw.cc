@@ -373,6 +373,7 @@ drawScene()
     return false;
 
   if (theRenderParams->antiAlias) {
+    int i;
 
     glClear(GL_ACCUM_BUFFER_BIT);
     for (int i = 0; i < theRenderParams->numAntiAliasSamps; i++) {
@@ -555,7 +556,7 @@ drawMeshesFromLightView (void)
   // and toss in any corners of the scene bbox that fall onscreen
   ScreenBox screen (NULL, 0, curWidth-1, 0, curHeight-1);
   const Bbox& bb = theScene->worldBbox();
-  for (i = 0; i < 8; i++) {
+  for (int i = 0; i < 8; i++) {
     if (screen.accept (bb.corner(i))) {
       cornerPos.push_back (bb.corner (i));
       //cerr << "accept bb corner " << i << endl;
@@ -607,7 +608,7 @@ drawMeshesFromLightView (void)
   // centered and fills the new viewport.
   Projector proj;
   int x1 = 1e6, x2 = -1e6, y1 = 1e6, y2 = -1e6;
-  for (i = 0; i < cornerPos.size(); i++) {
+  for (int i = 0; i < cornerPos.size(); i++) {
     cornerPos[i] = proj (cornerPos[i]);
     x1 = MIN (x1, cornerPos[i][0]);
     x2 = MAX (x2, cornerPos[i][0]);

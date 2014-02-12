@@ -621,7 +621,7 @@ chen_medioni(Pnt3 *ctr,     // control points (source)
   double HtH[6][6];
   double HtP[6], Hi[6];
 
-  for (i=0; i<6; i++) {
+  for (int i=0; i<6; i++) {
     HtH[i][0] =
     HtH[i][1] =
     HtH[i][2] =
@@ -634,7 +634,7 @@ chen_medioni(Pnt3 *ctr,     // control points (source)
   double Pi;
   Pnt3 PxS;
   double sum = 0;
-  for (i=0; i<n; i++) {
+  for (int i=0; i<n; i++) {
     Pi = dot(srf[i]-ctr[i], nrm[i]);
     PxS = cross(ctr[i]-cm, nrm[i]);
     Hi[0] = PxS[0];

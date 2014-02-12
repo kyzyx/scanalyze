@@ -1069,7 +1069,7 @@ unsigned char* filledPolyPixels (int& width, int& height,
   delete coords;
 
   // free memory used by combine-created vertices
-  for (i = 0; i < hack_vert_alloc.size(); i++)
+  for (int i = 0; i < hack_vert_alloc.size(); i++)
     delete hack_vert_alloc[i];
   hack_vert_alloc.clear();
 #endif // GLU_VERSION_1_2
@@ -1137,7 +1137,7 @@ PlvGetSelectedMeshesCmd(ClientData clientData, Tcl_Interp *interp,
     return TCL_ERROR;
   }
 
-  for (i = 0; i < theScene->meshSets.size(); i++) {
+  for (int i = 0; i < theScene->meshSets.size(); i++) {
     DisplayableMesh *displayMesh = theScene->meshSets[i];
     if (!bIncludeHidden && !displayMesh->getVisible())
       continue;
@@ -1173,7 +1173,8 @@ void resizeSelectionToWindow (struct Togl* togl)
   float scale = newhyp / oldhyp;
 
   int cx = 0, cy = 0;
-  for (int i = 0; i < nPts; i++) {
+  int i;
+  for (i = 0; i < nPts; i++) {
     cx += theSel[i].x;
     cy += theSel[i].y;
   }

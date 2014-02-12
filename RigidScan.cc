@@ -236,7 +236,7 @@ RigidScan::write_resolution_mesh (int nPolys, const crope& fname,
       nvtx = 0;
       ntris = 0;
       ncolors = 0;
-      for (i = 0; i < mt->vtx.size(); i++) {
+      for (int i = 0; i < mt->vtx.size(); i++) {
 // STL Update
 	vector<Pnt3>::iterator newVtxStart = vtx.end();
 

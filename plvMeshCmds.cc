@@ -502,7 +502,7 @@ PlvHiliteScanCmd(ClientData clientData, Tcl_Interp *interp,
   g_hilitedScans.clear();
   g_hilitedScans.reserve (argc - 1);
 
-  for (i = 1; i < argc; i++) {
+  for (int i = 1; i < argc; i++) {
     DisplayableMesh* dispMesh = FindMeshDisplayInfo (argv[i]);
     if (!dispMesh) {
       cerr << argv[0] << " can't find " << argv[i] << endl;
@@ -514,7 +514,7 @@ PlvHiliteScanCmd(ClientData clientData, Tcl_Interp *interp,
   }
 
   // and hilite current selection in meshcontrols window
-  for (i = 0; i < g_hilitedScans.size(); i++)
+  for (int i = 0; i < g_hilitedScans.size(); i++)
     Tcl_VarEval (interp, "hiliteScanEntry ",
 		 g_hilitedScans[i]->getName(),
 		 " 1", NULL);
@@ -759,7 +759,7 @@ int PlvRunExternalProgram(ClientData clientData, Tcl_Interp *interp,
     bool ccw = (PolygonArea(theSel.pts) > 0 ? true : false);
 
     int j;
-    for (i=0; i<theSel.pts.size(); i++) {
+    for (int i=0; i<theSel.pts.size(); i++) {
       char tempVertBuf[256];
       j = (i + 1) % theSel.pts.size();
 

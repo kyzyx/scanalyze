@@ -325,7 +325,7 @@ GlobalReg::mapEntry::stats(void)
     rmsErr += d;
     avgErr += sqrtf(d);
   }
-  for (j=0; j<n; j++) {
+  for (int j=0; j<n; j++) {
     // calculate the point wise distances
     first  = ptsb[j];
     second = ptsb[j];
@@ -593,7 +593,7 @@ GlobalReg::mapEntry::export_cyber_raw(const char *fname)
     out.write((char*) &cw.y,   2*sizeof(short));
     out.write((char*) &cw.nod, 2*sizeof(float));
   }
-  for (i=0; i<cPnt; i++) {
+  for (int i=0; i<cPnt; i++) {
     if (csb->get_raw_data(ptsb[i], cw) == false) {
       cerr << "Problem in GlobalReg::mapEntry::export_cyber_raw()"
 	   << endl;
@@ -2291,7 +2291,7 @@ GlobalReg::getPairingSummary (TbObj* mesh, ERRMETRIC metric,
 
   if (!mesh) { // don't double-count
     for (int i = 0; i < 3; i++) count[i] /= 2;
-    for (i = 0; i < 4; i++) qual[i] /= 2;
+    for (int i = 0; i < 4; i++) qual[i] /= 2;
   }
 
   return true;

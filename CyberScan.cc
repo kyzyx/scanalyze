@@ -84,7 +84,7 @@ CyberScan::read_postprocess(const char *filename)
 
   // by default, start at lowest res
 
-  for (i=0; i<sweeps.size(); i++)
+  for (int i=0; i<sweeps.size(); i++)
     sweeps[i]->select_coarsest();
   select_coarsest();
 
@@ -92,7 +92,7 @@ CyberScan::read_postprocess(const char *filename)
 
   if (!strcmp(Tcl_GetVar(g_tclInterp, "subsamplePreserveHoles",
 	                 TCL_GLOBAL_ONLY), "filter")) {
-	for (i=0; i<sweeps.size(); i++) {
+	for (int i=0; i<sweeps.size(); i++) {
 	  sweeps[i]->sd.fill_holes(2, 30);
 	  sweeps[i]->sd.fill_holes(1, 20);
 	}
@@ -212,7 +212,7 @@ CyberScan::getRegLevelFor (int iRes)
       rl->bdry = new vector<char>;  rl->bdry->reserve (nPts);
       rl->bFree = true;
 
-      for (i = 0; i < sweeps.size(); i++) {
+      for (int i = 0; i < sweeps.size(); i++) {
 	levelData *ld = sweeps[i]->levels[iRes];
 	long ps = rl->pnts->size();
 	long ns = rl->nrms->size();
@@ -1008,6 +1008,7 @@ vector< vector<CyberSweep*> >
 CyberScan::get_ordered_sweeps (void)
 {
   vector< vector<CyberSweep*> > v;
+  int iTrans, iSweep;
 
   // for each sweep
   for (int i=0; i < sweeps.size(); i++) {
@@ -1015,7 +1016,7 @@ CyberScan::get_ordered_sweeps (void)
 
     // insert a vector in v based on translation
     float t = sweep->sd.scanner_trans;
-    for (int iTrans = 0; iTrans < v.size(); iTrans++) {
+    for (iTrans = 0; iTrans < v.size(); iTrans++) {
       float tc = v[iTrans][0]->sd.scanner_trans;
       if (t <= tc) {
 // STL Update
@@ -1029,7 +1030,7 @@ CyberScan::get_ordered_sweeps (void)
 
     // find a place to insert sweep (within shell)
     // based on other screw
-    for (int iSweep = 0; iSweep < vShell.size(); iSweep++) {
+    for (iSweep = 0; iSweep < vShell.size(); iSweep++) {
       if (sweep->sd.other_screw < vShell[iSweep]->sd.other_screw)
 	break;
     }
@@ -1069,7 +1070,7 @@ CyberScan::dump_pts_laser_subsampled(std::string fname,
   // now, iterate
   SHOW(nPnts);
   float fact = float(nPnts) / float(n_valid_pts);
-  for (i=0; i < sweeps.size(); i++) {
+  for (int i=0; i < sweeps.size(); i++) {
     int n = sweeps[i]->sd.valid_pts();
     n_valid_pts -= n;
     if (i+1 == sweeps.size()) n = nPnts;
@@ -1110,7 +1111,8 @@ CyberScan::get_raw_data(const Pnt3 &p, sd_raw_pnt &data)
 
   // ok, found the point index
   // now, find which sweep it is and find the relative index there
-  for (int i=0; i<sweeps.size(); i++) {
+  int i;
+  for (i=0; i<sweeps.size(); i++) {
     int n = sweeps[i]->levels[lvl]->pnts.size();
     if (ind >= n) ind -= n;
     else          break;

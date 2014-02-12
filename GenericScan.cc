@@ -895,7 +895,7 @@ GenericScan::filter_inplace(const VertexFilter &filter)
 
     // and then which faces remain
     int triCount = 0;
-    for (i = 0; i < oldMesh->getTris().size(); i += 3) {
+    for (int i = 0; i < oldMesh->getTris().size(); i += 3) {
       if (newIndices[oldMesh->tris[i  ]] >= 0 &&
 	  newIndices[oldMesh->tris[i+1]] >= 0 &&
 	  newIndices[oldMesh->tris[i+2]] >= 0) {
@@ -921,7 +921,7 @@ GenericScan::filter_inplace(const VertexFilter &filter)
     newMesh->vtx.reserve (vertCount);
     if (oldMesh->nrm.size())
       newMesh->nrm.reserve (vertCount);
-    for (i = 0; i < oldMesh->num_verts(); i++) {
+    for (int i = 0; i < oldMesh->num_verts(); i++) {
       if (newIndices[i] > 0) {
 	newIndices[i] = count;
 	newMesh->copyVertFrom (oldMesh, i, count);
@@ -932,7 +932,7 @@ GenericScan::filter_inplace(const VertexFilter &filter)
     // copy and reindex the surviving faces
     count = 0;
     newMesh->tris.reserve (triCount * 3);
-    for (i = 0; i < oldMesh->tris.size(); i += 3) {
+    for (int i = 0; i < oldMesh->tris.size(); i += 3) {
       if (newIndices[oldMesh->tris[i  ]] >= 0 &&
 	  newIndices[oldMesh->tris[i+1]] >= 0 &&
 	  newIndices[oldMesh->tris[i+2]] >= 0) {

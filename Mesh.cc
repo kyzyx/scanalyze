@@ -998,7 +998,7 @@ Mesh::remove_unused_vtxs(void)
   // also keep tab on how the indices change
   int cnt = 0;
   n = vtx.size();
-  for (i=0; i<n; i++) {
+  for (int i=0; i<n; i++) {
     if (vtx_ind[i] != -1) {
       vtx_ind[i] = cnt;
       copyVertFrom (this, i, cnt);
@@ -1010,7 +1010,7 @@ Mesh::remove_unused_vtxs(void)
   if (nrm.size()) nrm.erase(nrm.begin() + (cnt*3), nrm.end());
   // march through triangles and correct the indices
   n = tris.size();
-  for (i=0; i<n; i++) {
+  for (int i=0; i<n; i++) {
     tris[i] = vtx_ind[tris[i]];
     assert (tris[i] >=0 && tris[i] < vtx.size());
   }

@@ -296,7 +296,7 @@ remove_unused_vtxs(vector<Pnt3> &vtx,
   // also keep tab on how the indices change
   int cnt = 0;
   n = vtx.size();
-  for (i=0; i<n; i++) {
+  for (int i=0; i<n; i++) {
     if (vtx_ind[i] != -1) {
       vtx_ind[i] = cnt;
       vtx[cnt] = vtx[i];
@@ -307,7 +307,7 @@ remove_unused_vtxs(vector<Pnt3> &vtx,
   vtx.erase(vtx.begin() +cnt, vtx.end());
   // march through triangles and correct the indices
   n = tri.size();
-  for (i=0; i<n; i+=3) {
+  for (int i=0; i<n; i+=3) {
     tri[i+0] = vtx_ind[tri[i+0]];
     tri[i+1] = vtx_ind[tri[i+1]];
     tri[i+2] = vtx_ind[tri[i+2]];
@@ -586,7 +586,7 @@ TriMesh_FindAdjacentFaces (int numvertices,
 
   // Step II - compute the actual vertex->tri lists...
   adjacentfacelist* adjacentfaces = new adjacentfacelist[numvertices];
-  for (i = 0; i < numvertices; i++) {
+  for (int i = 0; i < numvertices; i++) {
     adjacentfaces[i] = adjacentfacedata;
     adjacentfacedata += numadjacentfaces[i];
 
@@ -598,7 +598,7 @@ TriMesh_FindAdjacentFaces (int numvertices,
   for (unsigned* afdp = adjacentfaces[0]; afdp < adjacentfacedata; afdp++)
     *afdp = numfaces;
 
-  for (i = 0; i < numfaces; i++) {
+  for (int i = 0; i < numfaces; i++) {
     unsigned *p = adjacentfaces[faces[i]];
     while (*p != numfaces)
       p++;
@@ -965,7 +965,7 @@ nbors_tris(int    n_vtx,
 
   // Step II - compute the actual vertex->tri lists...
   nbors = new int*[n_vtx];
-  for (i=0; i<n_vtx; i++) {
+  for (int i=0; i<n_vtx; i++) {
     nbors[i] = data;
     data += n_nbors[i];
   }
@@ -977,14 +977,14 @@ nbors_tris(int    n_vtx,
     *p = -1;
   }
 
-  for (i=0; i<n_tri_inds; i++) {
+  for (int i=0; i<n_tri_inds; i++) {
     int *p = nbors[tris[i]];
     while (*p != -1) p++;
     *p = i;
   }
 
   if (sorted) {
-    for (i=0; i<n_vtx; i++) {
+    for (int i=0; i<n_vtx; i++) {
       sort_nbors(nbors[i], n_nbors[i], tris);
     }
   }
@@ -1202,6 +1202,7 @@ distance_from_boundary(vector<float> &distances,
   TIMER(dist);
 
   int n = pnts.size();
+  int i;
 
   // find boundary verts
   vector<char> bdry(n, (char)0);
@@ -1212,7 +1213,7 @@ distance_from_boundary(vector<float> &distances,
   // for each vertex, try to find a full loop
   // around it, if can't its boundary
   int va, vb; // vertex after, vertex before
-  for (int i=0; i<n; i++) {
+  for (i=0; i<n; i++) {
     if (n_nbors[i] <= 1) {
       bdry[i] = 1;
       continue;

@@ -492,7 +492,7 @@ CyraResLevel::ReadPts(const crope &inname)
   ////////////// Filter out spikes?  ///////////
   if (CyraFilterSpikes) {
     cerr << "Filtering out high-intensity spikes....";
-    for (x=0; x < width-1; x++) {
+    for (int x=0; x < width-1; x++) {
       for (int y=0; y < height-1; y++) {
 	CyraSample *v1 = &(point(x,y));
 
@@ -549,7 +549,7 @@ CyraResLevel::ReadPts(const crope &inname)
   ////////////// Fill holes? ///////////
   if (CyraFillHoles) {
     cerr << "Filling Tiny Holes....";
-    for (x=0; x < width-1; x++) {
+    for (int x=0; x < width-1; x++) {
       for (int y=0; y < height-1; y++) {
 	CyraSample *v1 = &(point(x,y));
 
@@ -578,7 +578,7 @@ CyraResLevel::ReadPts(const crope &inname)
 	// over 3x3 neighborhood...
 	float closestZ = point(xstart, ystart).vtx[2];
 	float closestDZ2 = (neighborsZ-closestZ)*(neighborsZ-closestZ);
-	for (nex = xstart; nex <= xend; nex++) {
+	for (int nex = xstart; nex <= xend; nex++) {
 	  for (int ney = ystart; ney <= yend; ney++) {
 	    CyraSample *ne = &point(nex, ney);
 	    float neDZ2 = (neighborsZ-ne->vtx[2])*(neighborsZ-ne->vtx[2]);
@@ -603,7 +603,7 @@ CyraResLevel::ReadPts(const crope &inname)
 	float neighborI = 0;
 	float neighborConf = 0;
 
-	for (nex = xstart; nex <= xend; nex++) {
+	for (int nex = xstart; nex <= xend; nex++) {
 	  for (int ney = ystart; ney <= yend; ney++) {
 	    CyraSample *ne = &point(nex, ney);
 	    if ((nex != x || ney != y) &&
@@ -641,7 +641,7 @@ CyraResLevel::ReadPts(const crope &inname)
 
   ////////////// Generate the Tesselation ///////////
   cerr << "Generating tesselation...";
-  for (x=0; x < width-1; x++) {
+  for (int x=0; x < width-1; x++) {
     for (int y=0; y < height-1; y++) {
       // get pointers to the four vertices surrounding this
       // square:
@@ -752,7 +752,7 @@ CyraResLevel::WritePts(const crope &outname)
 
   // Write out the points, since this is the only data actually in
   // a .pts file....
-  for (x=lox; x <= hix; x++) {
+  for (int x=lox; x <= hix; x++) {
     for (int y=loy; y <= hiy; y++) {
       samp = point(x,y);
       if (samp.confidence == 0) {
@@ -1035,7 +1035,7 @@ CyraResLevel::flipNormals(void)
   CyraTess tess;
   // Note:  only goes to width-1, but want to do middle col, too, so
   // the width-1+1 cancel out...
-  for (xx=0; xx < (width)/2; xx++) {
+  for (int xx=0; xx < (width)/2; xx++) {
     for (int yy=0; yy < height-1; yy++) {
       tess = tri(xx,yy);
       // Set scanline xx to be mirror of width-xx-2

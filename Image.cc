@@ -468,7 +468,7 @@ Image::toRGBA(void)
   delete[] _data;
   _data = new_data;
   dim = 4;
-  for (i=0; i<ysize; i++) data[i] = &_data[xsize*dim*i];
+  for (int i=0; i<ysize; i++) data[i] = &_data[xsize*dim*i];
 }
 
 
@@ -504,7 +504,7 @@ Image::toRGB(void)
   delete[] _data;
   _data = new_data;
   dim = 3;
-  for (i=0; i<ysize; i++) data[i] = &_data[xsize*dim*i];
+  for (int i=0; i<ysize; i++) data[i] = &_data[xsize*dim*i];
 }
 
 void
@@ -650,7 +650,7 @@ Image::resize(int w, int h)
   // copy the data
   int maxy = (h > ysize ? ysize : h);
   int maxx = (w > xsize ? xsize : w);
-  for (i=0; i<maxy; i++)
+  for (int i=0; i<maxy; i++)
     //bcopy(&_data[i*xsize*dim], &n_data[i*w*dim], maxx*dim);
     memcpy(&n_data[i*w*dim], &_data[i*xsize*dim], maxx*dim);
   // delete old space
@@ -770,7 +770,7 @@ Image::read(const char *fname, Format format, int w, int h)
 	return 0;
       }
       create (w, h, 1);
-      for (i=h-1; i>=0; i--)
+      for (int i=h-1; i>=0; i--)
 	from.read(&_data[i*w], w);
     }
     break;
@@ -862,7 +862,7 @@ Image::read(const char *fname, Format format, int w, int h)
       float *tmp = new float[cnt];
       create(w,h,3);
       from.read((char *)tmp, cnt*sizeof(float));
-      for (i=0; i<cnt; i++) {
+      for (int i=0; i<cnt; i++) {
 	_data[i] = (uchar)(255.999999 * tmp[i]);
       }
     }

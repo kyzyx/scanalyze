@@ -1169,7 +1169,8 @@ PlvPositionCameraCmd(ClientData clientData, Tcl_Interp *interp,
 
     delete cam;
   } else if (argc >= 15) {
-    for (int i = 1; i < 4; i++)
+    int i;
+    for (i = 1; i < 4; i++)
       c[i-1] = atof (argv[i]);
     for (; i < 7; i++)
       o[i-4] = atof (argv[i]);
@@ -1240,7 +1241,7 @@ PlvSortScanListCmd (ClientData clientData, Tcl_Interp *interp,
 			     bDictionary, bListInvisible);
 
   int size = 0;
-  for (i = 0; i < sortedList.size(); i++) {
+  for (int i = 0; i < sortedList.size(); i++) {
     size += strlen (sortedList[i]->getName()) + 1;
   }
 
@@ -1249,7 +1250,7 @@ PlvSortScanListCmd (ClientData clientData, Tcl_Interp *interp,
   } else {
     char* list = (char*)malloc (size);
     char* end = list;
-    for (i = 0; i < sortedList.size(); i++) {
+    for (int i = 0; i < sortedList.size(); i++) {
       strcpy (end, sortedList[i]->getName());
       end += strlen (end);
       *end++ = ' ';

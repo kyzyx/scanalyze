@@ -199,7 +199,8 @@ GroupScan::rebuildResolutions (void)
   // poorer children, if necessary)
   int iPolysVis = 0;
   resolutions.clear();
-  for (int i = 0; i < nRes; i++) {
+  int i;
+  for (i = 0; i < nRes; i++) {
     int nThisRes = 0;
     bool bInMem = true;
     bool bDesiredInMem = true;
@@ -383,7 +384,7 @@ GroupScan::subsample_points(float rate, vector<Pnt3> &p,
 	xf (*pi);
       }
       xf.removeTranslation();
-      for (pi = cn.begin(); pi < cn.end(); pi++) {
+      for (vector<Pnt3>::iterator pi = cn.begin(); pi < cn.end(); pi++) {
 	xf (*pi);
       }
     }

@@ -281,7 +281,7 @@ CyraScan::filtered_copy(const VertexFilter& filter)
   clipName += info;
 
   // Tell scanalyze about the meshes...
-  for (i=0; i < newScan->levels.size(); i++) {
+  for (int i=0; i < newScan->levels.size(); i++) {
     CyraResLevel *level = &newScan->levels[i];
     newScan->insert_resolution(level->num_tris(), clipName, true, true);
     cerr << "Telling scanalyze about " << level->num_tris()

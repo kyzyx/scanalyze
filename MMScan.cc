@@ -504,7 +504,7 @@ MMScan::create_resolution_absolute(int budget, Decimator dec)
 
   int iPos = findLevelForRes(decimatedTris);
 
-  for (i = 0; i < scans.size(); i++) {
+  for (int i = 0; i < scans.size(); i++) {
 // STL Update
     scans[i].meshes.insert(scans[i].meshes.begin() + iPos, resolutions[i]);
   }
@@ -545,11 +545,11 @@ MMScan::flipNormals (void)
       // tstrip normals
       flip_tris(scans[i].meshes[j].tstrips, true);
       // per-vertex normals
-      for (k = 0; k < scans[i].meshes[j].nrm.size(); k++) {
+      for (int k = 0; k < scans[i].meshes[j].nrm.size(); k++) {
 	scans[i].meshes[j].nrm[k] *= -1;
       }
     }
-    for (j = 0; j < scans[i].stripes.size(); j++) {
+    for (int j = 0; j < scans[i].stripes.size(); j++) {
       // this isn't completely effective; causes z-axis align problems
       scans[i].stripes[j].sensorVec *= -1;
       if (scans[i].stripes[j].scanDir == 1) scans[i].stripes[j].scanDir = 2;
@@ -571,11 +571,11 @@ MMScan::flipNormals (int scanNum)
     // tstrip normals
     flip_tris(scans[scanNum].meshes[j].tstrips, true);
     // per-vertex normals
-    for (k = 0; k < scans[scanNum].meshes[j].nrm.size(); k++) {
+    for (int k = 0; k < scans[scanNum].meshes[j].nrm.size(); k++) {
       scans[scanNum].meshes[j].nrm[k] *= -1;
     }
   }
-  for (j = 0; j < scans[scanNum].stripes.size(); j++) {
+  for (int j = 0; j < scans[scanNum].stripes.size(); j++) {
     // sensor vectors (so that it will triangulate flipped next time
     scans[scanNum].stripes[j].sensorVec *= -1;
     if (scans[scanNum].stripes[j].scanDir == 1)
@@ -752,7 +752,8 @@ MMScan::load_resolution (int iRes)
   cerr << name << ": build mesh (~" << resolutions[iRes].abs_resolution
        << ") from " << scans.size() << " fragments: " << flush;
 
-  for (int i = 0; i < scans.size(); i++) {
+  int i;
+  for (i = 0; i < scans.size(); i++) {
     progress.update(i);
     mmScanFrag *scan = &scans[0] + i;
     mmResLevel& res = scan->meshes[iRes];
@@ -1337,7 +1338,7 @@ MMScan::getRegData (void)
       reg.nrm.push_back(res.nrm[3 * j + 1]);
       reg.nrm.push_back(res.nrm[3 * j + 2]);
     }
-    for (j = 0; j < res.tris.size(); j++)
+    for (int j = 0; j < res.tris.size(); j++)
       reg.tris.push_back(res.tris[j] + reIndexFactor);
   }
 
@@ -1916,7 +1917,7 @@ remove_unused_vtxs(vector<Pnt3> &vtx,
   // also keep tab on how the indices change
   int cnt = 0;
   n = vtx.size();
-  for (i=0; i<n; i++) {
+  for (int i=0; i<n; i++) {
     if (vtx_ind[i] != -1) {
       vtx_ind[i] = cnt;
       vtx[cnt] = vtx[i];
@@ -1927,7 +1928,7 @@ remove_unused_vtxs(vector<Pnt3> &vtx,
   vtx.erase(vtx.begin() + cnt, vtx.end());
   // march through triangles and correct the indices
   n = tri.size();
-  for (i=0; i<n; i+=3) {
+  for (int i=0; i<n; i+=3) {
     tri[i+0] = vtx_ind[tri[i+0]];
     tri[i+1] = vtx_ind[tri[i+1]];
     tri[i+2] = vtx_ind[tri[i+2]];

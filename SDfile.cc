@@ -902,7 +902,7 @@ SDfile::write(const crope &fname)
   if (g_bNoIntensity) {
     cerr << "No intensity data in memory, writing zeros..." << endl;
     char c = 0;
-    for (i=0; i<n_pts; i++) {
+    for (int i=0; i<n_pts; i++) {
       fwrite(&c, sizeof(unsigned char), 1, sdfile);
     }
   } else {

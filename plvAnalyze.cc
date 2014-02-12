@@ -582,7 +582,7 @@ PlotLineDepth (struct Togl* togl)
       glVertex2f (0, i);
       glVertex2f (scaleW, i);
     }
-    for (i = 0; i <= scaleW; i += step) {
+    for (double i = 0; i <= scaleW; i += step) {
       glVertex2f (i, 0);
       glVertex2f (i, scaleH);
     }
@@ -675,7 +675,7 @@ PlotLineDepth (struct Togl* togl)
 	ptSize = 1.0;    //dominate white line, but want points visible
       glPointSize (ptSize);
       glBegin (GL_POINTS);
-      for (x = 0 ; x < nPixels; x++) {
+      for (int x = 0 ; x < nPixels; x++) {
 	if (!ISBACKGROUND(cld->pixels[x]))
 	  glVertex2f (cld->objPt[x][0], cld->objPt[x][2]);
       }

@@ -184,7 +184,7 @@ CyraResLevel::Mean50Filter(CyraResLevel &original, int m, int n)
 	  }
 	  // Set midz to be the middle sample...
 	  CyraSample *midz = validSamp[0];
-	  for (i=1; i < 3; i++) {
+	  for (int i=1; i < 3; i++) {
 	    if (validSamp[i] != bigz && validSamp[i] != litz) {
 	      midz = validSamp[i];
 	    }

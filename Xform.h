@@ -604,7 +604,7 @@ Xform<T>::invert(void)
    int maxc, maxr, i, r, c;
    double max, temp, pivot_inv;
 
-   for (i=0; i<4; i++) {
+   for (int i=0; i<4; i++) {
 
       // Determine largest magnitude pivot element
 
@@ -668,7 +668,7 @@ Xform<T>::invert(void)
 
    // Fix things up by swapping columns back in reverse order
 
-   for (i=3; i>=0; i--) {
+   for (int i=3; i>=0; i--) {
       if (swap_row[i] != swap_col[i])
          for (r=0; r<4; r++)
             swap(m[r][swap_row[i]], m[r][swap_col[i]]);
@@ -682,24 +682,24 @@ template <class T> inline void
 Xform<T>::translate(const double t[3]) // M <- T*M
 {
   for (int i=0; i<4; i++) m[i][0] += t[0]*m[i][3];
-  for (i=0; i<4; i++)     m[i][1] += t[1]*m[i][3];
-  for (i=0; i<4; i++)     m[i][2] += t[2]*m[i][3];
+  for (int i=0; i<4; i++)     m[i][1] += t[1]*m[i][3];
+  for (int i=0; i<4; i++)     m[i][2] += t[2]*m[i][3];
 }
 
 template <class T> inline void
 Xform<T>::translate(const float t[3]) // M <- T*M
 {
   for (int i=0; i<4; i++) m[i][0] += t[0]*m[i][3];
-  for (i=0; i<4; i++)     m[i][1] += t[1]*m[i][3];
-  for (i=0; i<4; i++)     m[i][2] += t[2]*m[i][3];
+  for (int i=0; i<4; i++)     m[i][1] += t[1]*m[i][3];
+  for (int i=0; i<4; i++)     m[i][2] += t[2]*m[i][3];
 }
 
 template <class T> inline void
 Xform<T>::translate(T x, T y, T z) // M <- T*M
 {
   for (int i=0; i<4; i++) m[i][0] += x*m[i][3];
-  for (i=0; i<4; i++)     m[i][1] += y*m[i][3];
-  for (i=0; i<4; i++)     m[i][2] += z*m[i][3];
+  for (int i=0; i<4; i++)     m[i][1] += y*m[i][3];
+  for (int i=0; i<4; i++)     m[i][2] += z*m[i][3];
 }
 
 template <class T> inline void
@@ -771,8 +771,8 @@ Xform<T>::rotX(T a) // M <- R*M
   double ca = cos(a);
   double row1[4];
   for (int i=0; i<4; i++) row1[i] = m[i][1]; // temp. copy
-  for (i=0; i<4; i++)     m[i][1] = ca*row1[i] - sa*m[i][2];
-  for (i=0; i<4; i++)     m[i][2] = sa*row1[i] + ca*m[i][2];
+  for (int i=0; i<4; i++)     m[i][1] = ca*row1[i] - sa*m[i][2];
+  for (int i=0; i<4; i++)     m[i][2] = sa*row1[i] + ca*m[i][2];
   return *this;
 }
 
@@ -783,8 +783,8 @@ Xform<T>::rotY(T a) // M <- R*M
   double ca = cos(a);
   double row0[4];
   for (int i=0; i<4; i++) row0[i] =  m[i][0]; // temp. copy
-  for (i=0; i<4; i++)     m[i][0] =  ca*row0[i] + sa*m[i][2];
-  for (i=0; i<4; i++)     m[i][2] = -sa*row0[i] + ca*m[i][2];
+  for (int i=0; i<4; i++)     m[i][0] =  ca*row0[i] + sa*m[i][2];
+  for (int i=0; i<4; i++)     m[i][2] = -sa*row0[i] + ca*m[i][2];
   return *this;
 }
 
@@ -795,8 +795,8 @@ Xform<T>::rotZ(T a) // M <- R*M
   double ca = cos(a);
   double row0[4];
   for (int i=0; i<4; i++) row0[i] = m[i][0]; // temp. copy
-  for (i=0; i<4; i++)     m[i][0] = ca*row0[i] - sa*m[i][1];
-  for (i=0; i<4; i++)     m[i][1] = sa*row0[i] + ca*m[i][1];
+  for (int i=0; i<4; i++)     m[i][0] = ca*row0[i] - sa*m[i][1];
+  for (int i=0; i<4; i++)     m[i][1] = sa*row0[i] + ca*m[i][1];
   return *this;
 }
 
