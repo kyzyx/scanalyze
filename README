@@ -21,6 +21,7 @@ your computer.
 
 1.1 Linux and IRIX
 ------------------
+
 In the scanalyze source code directory, run "make".  For Linux, you can 
 choose between the debug and optimized version.  Run "make opt" to compile 
 the optimized version, and "make debug" for the debug version.  The default 
@@ -28,6 +29,19 @@ version is the debug version.  Similarly for IRIX, you can compile 32bit
 and 64 bit debug and optimized versions.  Run "make opt32" or "make opt64 "
 for optimized versions, and "make debug32" or "make debug64" for debug 
 versions.
+
+******************** NOTE (Edward Zhang, Feb 12 2014) ******************** 
+Tcl/Tk: 
+  - This version builds successfully with Tcl/Tk 8.5. Earlier versions
+    may require minor modifications. 
+  - In Makedefs.Linux, make sure you are linking against the correct
+    version of Tcl/Tk.
+
+gcc: 
+  - This version builds successfully with gcc >4.6
+  - The code uses unordered_map and unordered_set, which requires the use
+    of C++11 STL.
+**************************************************************************
 
 When compiling for IRIX, you will need to modify the Makedefs.IRIX file to 
 include the correct path to your Tcl/Tk library files.  You may also need 
@@ -41,6 +55,9 @@ that the necessary libraries are installed (tclrl, GNU ReadLine, termcap).
 
 1.2 Windows
 -----------
+******************** NOTE (Edward Zhang, Feb 12 2014) ******************** 
+This build was not tested under Windows.
+**************************************************************************
 To compile scanalyze you will need two more packages: SGI's IFL (image 
 format library) and Tcl/Tk version 8.0p2 (later versions are not 
 compatible yet). You also need Gnu Make; we use the version that comes 
