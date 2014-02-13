@@ -20,7 +20,7 @@ endif
 
 
 CC = gcc -w
-CXX = g++ -fpermissive -w -std=c++0x -DPATH_MAX=256 -Dlinux
+CXX = g++ -fpermissive -w -std=c++0x -DPATH_MAX=256 -Dlinux -DUSE_PANIC_ON_PHOTO_ALLOC_FAILURE -DUSE_COMPOSITELESS_PHOTO_PUT_BLOCK
 LINK = $(CXX)
 
 
@@ -43,7 +43,7 @@ AUXLIBS =
 # Final compiler options
 #
 
-ALLFLAGS = $(OPTIMIZER) $(INCLUDES) $(TARGET) -MMD
+ALLFLAGS = $(OPTIMIZER) $(INCLUDES) -MMD
 CFLAGS = $(ALLFLAGS) -D_BOOL
 CXXFLAGS = $(ALLFLAGS)
 
